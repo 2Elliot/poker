@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="A simple poker web app" />
+    <title>Poker</title>
+
+    <!-- Fallback CSS file (create styles.css in the same folder) -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Favicons (optional) -->
+    <link rel="icon" href="favicon.ico" />
+</head>
+
+<body>
+    <!-- Back button-->
+    <li><a href="https://elliotd.net">Home</a></li>
+
+    <header>
+        <div class="container">
+            <h1>Poker</h1>
+            <nav aria-label="Main navigation">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Game</a></li>
+                    <li><a href="#">Rules</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main" class="container">
+        <section>
+            <h2>Welcome</h2>
+            <p>This is the starting point for the Poker web app. Add your game UI and scripts below.</p>
+        </section>
+
+        <!-- Example layout placeholders -->
+        <section id="game-area" aria-label="Game area">
+            <!-- Game UI will be injected here -->
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="year"></span> Poker</p>
+        </div>
+    </footer>
+
+    <!-- Main JavaScript (create app.js in the same folder) -->
+    <script>
+        // Small boot script: set year and basic keyboard focus styles
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Simple example: focus skip link visibility on keyboard navigation
+        (function () {
+            const skip = document.querySelector('.skip-link');
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Tab') skip.style.position = 'static';
+            });
+            document.addEventListener('mousedown', () => {
+                skip.style.position = 'absolute';
+            });
+        })();
+    </script>
+</body>
+
+</html>
