@@ -68,10 +68,13 @@ def get_available_bots():
         
         bots_info = []
         for bot_name in loaded_bots:
+            parts = bot_name.split(' - ')
+            name = parts[0] if parts else bot_name
+            bot_type = parts[1] if len(parts) > 1 else 'Python Bot'
             bots_info.append({
                 'id': bot_name,
-                'name': bot_name.replace('_', ' ').title(),
-                'type': 'Python Bot'
+                'name': name,
+                'type': bot_type
             })
         
         return jsonify({

@@ -257,7 +257,7 @@ function renderTable() {
 
 // Render player cards
 function renderPlayerCards(player) {
-    console.log("Rendering cards for player:", player);
+    // console.log("Rendering cards for player:", player);
     if (!player.cards || player.cards.length === 0) {
         return '';
     }
