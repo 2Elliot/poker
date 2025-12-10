@@ -95,7 +95,7 @@ class ConservativeBot(PokerBotAPI):
 
         # Decent hand (pair)
         if hand_rank >= HandEvaluator.HAND_RANKINGS['pair']:
-             if PlayerAction.RAISE in legal_actions:
+            if PlayerAction.RAISE in legal_actions:
                 # Bet half the pot
                 raise_amount = min(game_state.pot * 2, max_bet)
                 raise_amount = max(raise_amount, min_bet)
