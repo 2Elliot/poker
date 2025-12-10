@@ -624,6 +624,39 @@ body {
     gap: 20px;
 }
 
+/* Resize handles */
+.resize-handle {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 10;
+}
+
+.resize-handle.vertical {
+    top: 0;
+    right: 0;
+    width: 6px;
+    height: 100%;
+    cursor: ew-resize;
+}
+
+.resize-handle.horizontal {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    cursor: ns-resize;
+}
+
+/* Make sure sidebar and console are positioned for handles */
+.sidebar {
+    position: relative;
+}
+
+.console-container {
+    position: relative;
+}
+
+
 /* Scrollbar Styling */
 ::-webkit-scrollbar {
     width: 8px;

@@ -1,0 +1,1264 @@
+2025-12-10 09:35:13,170 - tournament_runner - INFO - Starting poker tournament...
+2025-12-10 09:35:13,171 - bot_manager - INFO - Successfully loaded bot: aggressive_bot
+2025-12-10 09:35:13,172 - bot_manager - INFO - Successfully loaded bot: conservative_bot
+2025-12-10 09:35:13,173 - bot_manager - INFO - Successfully loaded bot: random_bot
+2025-12-10 09:35:13,173 - bot_manager - INFO - Loaded 3 bots successfully
+2025-12-10 09:35:13,173 - tournament_runner - INFO - Loaded 3 bots: ['aggressive_bot', 'conservative_bot', 'random_bot']
+2025-12-10 09:35:13,173 - tournament - INFO - Tournament setup with 1 tables
+2025-12-10 09:35:13,174 - tournament - INFO - Table 1: ['aggressive_bot', 'random_bot', 'conservative_bot']
+2025-12-10 09:35:13,174 - tournament_runner - INFO - Starting hand #1 on table 1
+2025-12-10 09:35:13,174 - engine.poker_game - INFO - random_bot posts small blind: 10
+2025-12-10 09:35:13,174 - engine.poker_game - INFO - conservative_bot posts big blind: 20
+2025-12-10 09:35:13,174 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,174 - engine.poker_game - INFO - Dealer: aggressive_bot
+2025-12-10 09:35:13,174 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[4♥, 7♣]) (chips: 1000)
+2025-12-10 09:35:13,174 - engine.poker_game - INFO - random_bot has PlayerHand(cards=[3♥, 10♥]) (chips: 990)
+2025-12-10 09:35:13,174 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[3♠, 8♣]) (chips: 980)
+2025-12-10 09:35:13,174 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,174 - engine.poker_game - INFO -   aggressive_bot folds
+2025-12-10 09:35:13,175 - engine.poker_game - INFO -   random_bot goes all-in for 990
+2025-12-10 09:35:13,175 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,175 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,175 - engine.poker_game - INFO - Pot: 1020
+2025-12-10 09:35:13,175 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,175 - engine.poker_game - INFO - random_bot wins 990 from side/main pot
+2025-12-10 09:35:13,175 - engine.poker_game - WARNING - Pot logic residual: 30
+2025-12-10 09:35:13,175 - tournament_runner - INFO - Hand #1 complete on table 1
+2025-12-10 09:35:13,175 - tournament_runner - INFO - Starting hand #2 on table 1
+2025-12-10 09:35:13,175 - engine.poker_game - INFO - conservative_bot posts small blind: 10
+2025-12-10 09:35:13,176 - engine.poker_game - INFO - aggressive_bot posts big blind: 20
+2025-12-10 09:35:13,176 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,176 - engine.poker_game - INFO - Dealer: random_bot
+2025-12-10 09:35:13,176 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[J♦, 9♥]) (chips: 980)
+2025-12-10 09:35:13,176 - engine.poker_game - INFO - random_bot has PlayerHand(cards=[A♥, 10♠]) (chips: 1020)
+2025-12-10 09:35:13,176 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[10♦, 2♠]) (chips: 970)
+2025-12-10 09:35:13,176 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,176 - engine.poker_game - INFO -   random_bot calls 20
+2025-12-10 09:35:13,176 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,176 - engine.poker_game - INFO -   aggressive_bot checks
+2025-12-10 09:35:13,176 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,176 - engine.poker_game - INFO - Pot: 50
+2025-12-10 09:35:13,176 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,177 - engine.poker_game - INFO - FLOP: [5♥, Q♥, 3♦]
+2025-12-10 09:35:13,177 - engine.poker_game - INFO - 
+--- FLOP BETTING ---
+2025-12-10 09:35:13,177 - engine.poker_game - INFO -   aggressive_bot checks
+2025-12-10 09:35:13,177 - engine.poker_game - INFO -   random_bot checks
+2025-12-10 09:35:13,177 - engine.poker_game - INFO - Community Cards: [5♥, Q♥, 3♦]
+2025-12-10 09:35:13,177 - engine.poker_game - INFO - Pot: 50
+2025-12-10 09:35:13,177 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,177 - engine.poker_game - INFO - TURN: 2♦
+2025-12-10 09:35:13,177 - engine.poker_game - INFO - 
+--- TURN BETTING ---
+2025-12-10 09:35:13,177 - engine.poker_game - INFO -   aggressive_bot checks
+2025-12-10 09:35:13,177 - engine.poker_game - INFO -   random_bot checks
+2025-12-10 09:35:13,177 - engine.poker_game - INFO - Community Cards: [5♥, Q♥, 3♦, 2♦]
+2025-12-10 09:35:13,177 - engine.poker_game - INFO - Pot: 50
+2025-12-10 09:35:13,177 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,178 - engine.poker_game - INFO - RIVER: 7♣
+2025-12-10 09:35:13,178 - engine.poker_game - INFO - 
+--- RIVER BETTING ---
+2025-12-10 09:35:13,178 - engine.poker_game - INFO -   aggressive_bot checks
+2025-12-10 09:35:13,178 - engine.poker_game - INFO -   random_bot raises to 68
+2025-12-10 09:35:13,178 - engine.poker_game - INFO -   aggressive_bot folds
+2025-12-10 09:35:13,178 - engine.poker_game - INFO - Community Cards: [5♥, Q♥, 3♦, 2♦, 7♣]
+2025-12-10 09:35:13,178 - engine.poker_game - INFO - Pot: 118
+2025-12-10 09:35:13,179 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,179 - engine.poker_game - INFO - random_bot wins 88 from side/main pot
+2025-12-10 09:35:13,179 - engine.poker_game - WARNING - Pot logic residual: 30
+2025-12-10 09:35:13,179 - tournament_runner - INFO - Hand #2 complete on table 1
+2025-12-10 09:35:13,179 - tournament_runner - INFO - Starting hand #3 on table 1
+2025-12-10 09:35:13,179 - engine.poker_game - INFO - aggressive_bot posts small blind: 10
+2025-12-10 09:35:13,179 - engine.poker_game - INFO - random_bot posts big blind: 20
+2025-12-10 09:35:13,179 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,179 - engine.poker_game - INFO - Dealer: conservative_bot
+2025-12-10 09:35:13,179 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[Q♣, A♦]) (chips: 970)
+2025-12-10 09:35:13,179 - engine.poker_game - INFO - random_bot has PlayerHand(cards=[4♥, 9♥]) (chips: 1030)
+2025-12-10 09:35:13,179 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[10♦, J♣]) (chips: 970)
+2025-12-10 09:35:13,179 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,180 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,180 - engine.poker_game - INFO -   aggressive_bot raises to 80
+2025-12-10 09:35:13,180 - engine.poker_game - INFO -   random_bot calls 60
+2025-12-10 09:35:13,180 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,180 - engine.poker_game - INFO - Pot: 160
+2025-12-10 09:35:13,180 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,180 - engine.poker_game - INFO - FLOP: [Q♠, 3♣, 7♣]
+2025-12-10 09:35:13,180 - engine.poker_game - INFO - 
+--- FLOP BETTING ---
+2025-12-10 09:35:13,180 - engine.poker_game - INFO -   random_bot folds
+2025-12-10 09:35:13,180 - engine.poker_game - INFO - Community Cards: [Q♠, 3♣, 7♣]
+2025-12-10 09:35:13,180 - engine.poker_game - INFO - Pot: 160
+2025-12-10 09:35:13,180 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,180 - engine.poker_game - INFO - aggressive_bot wins 120 from side/main pot
+2025-12-10 09:35:13,181 - engine.poker_game - INFO - aggressive_bot wins 10 from side/main pot
+2025-12-10 09:35:13,181 - engine.poker_game - WARNING - Pot logic residual: 30
+2025-12-10 09:35:13,181 - tournament_runner - INFO - Hand #3 complete on table 1
+2025-12-10 09:35:13,181 - tournament_runner - INFO - Starting hand #4 on table 1
+2025-12-10 09:35:13,181 - engine.poker_game - INFO - conservative_bot posts small blind: 10
+2025-12-10 09:35:13,181 - engine.poker_game - INFO - aggressive_bot posts big blind: 20
+2025-12-10 09:35:13,181 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,181 - engine.poker_game - INFO - Dealer: random_bot
+2025-12-10 09:35:13,181 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[K♥, 8♦]) (chips: 1040)
+2025-12-10 09:35:13,181 - engine.poker_game - INFO - random_bot has PlayerHand(cards=[6♦, 5♥]) (chips: 970)
+2025-12-10 09:35:13,181 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[2♠, 8♥]) (chips: 960)
+2025-12-10 09:35:13,181 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,181 - engine.poker_game - INFO -   random_bot raises to 41
+2025-12-10 09:35:13,181 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,182 - engine.poker_game - INFO -   aggressive_bot folds
+2025-12-10 09:35:13,182 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,182 - engine.poker_game - INFO - Pot: 71
+2025-12-10 09:35:13,182 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,182 - engine.poker_game - INFO - random_bot wins 41 from side/main pot
+2025-12-10 09:35:13,182 - engine.poker_game - WARNING - Pot logic residual: 30
+2025-12-10 09:35:13,182 - tournament_runner - INFO - Hand #4 complete on table 1
+2025-12-10 09:35:13,182 - tournament_runner - INFO - Starting hand #5 on table 1
+2025-12-10 09:35:13,182 - engine.poker_game - INFO - aggressive_bot posts small blind: 10
+2025-12-10 09:35:13,182 - engine.poker_game - INFO - random_bot posts big blind: 20
+2025-12-10 09:35:13,182 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,182 - engine.poker_game - INFO - Dealer: conservative_bot
+2025-12-10 09:35:13,182 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[J♣, 10♦]) (chips: 1030)
+2025-12-10 09:35:13,182 - engine.poker_game - INFO - random_bot has PlayerHand(cards=[2♠, 4♠]) (chips: 980)
+2025-12-10 09:35:13,183 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[Q♥, K♣]) (chips: 960)
+2025-12-10 09:35:13,183 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,183 - engine.poker_game - INFO -   conservative_bot raises to 40
+2025-12-10 09:35:13,183 - engine.poker_game - INFO -   aggressive_bot calls 30
+2025-12-10 09:35:13,183 - engine.poker_game - INFO -   random_bot goes all-in for 980
+2025-12-10 09:35:13,183 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,183 - engine.poker_game - INFO -   aggressive_bot folds
+2025-12-10 09:35:13,183 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,183 - engine.poker_game - INFO - Pot: 1080
+2025-12-10 09:35:13,183 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,183 - engine.poker_game - INFO - random_bot wins 90 from side/main pot
+2025-12-10 09:35:13,183 - engine.poker_game - INFO - random_bot wins 20 from side/main pot
+2025-12-10 09:35:13,183 - engine.poker_game - INFO - random_bot wins 940 from side/main pot
+2025-12-10 09:35:13,183 - engine.poker_game - WARNING - Pot logic residual: 30
+2025-12-10 09:35:13,183 - tournament_runner - INFO - Hand #5 complete on table 1
+2025-12-10 09:35:13,184 - tournament_runner - INFO - Starting hand #6 on table 1
+2025-12-10 09:35:13,184 - engine.poker_game - INFO - random_bot posts small blind: 10
+2025-12-10 09:35:13,184 - engine.poker_game - INFO - conservative_bot posts big blind: 20
+2025-12-10 09:35:13,184 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,184 - engine.poker_game - INFO - Dealer: aggressive_bot
+2025-12-10 09:35:13,184 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[7♠, 9♣]) (chips: 1000)
+2025-12-10 09:35:13,184 - engine.poker_game - INFO - random_bot has PlayerHand(cards=[10♥, 6♣]) (chips: 1070)
+2025-12-10 09:35:13,184 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[2♥, 4♥]) (chips: 900)
+2025-12-10 09:35:13,184 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,184 - engine.poker_game - INFO -   aggressive_bot raises to 60
+2025-12-10 09:35:13,184 - engine.poker_game - INFO -   random_bot raises to 110
+2025-12-10 09:35:13,184 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,184 - engine.poker_game - INFO -   aggressive_bot raises to 160
+2025-12-10 09:35:13,185 - engine.poker_game - INFO -   random_bot folds
+2025-12-10 09:35:13,185 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,185 - engine.poker_game - INFO - Pot: 290
+2025-12-10 09:35:13,185 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,185 - engine.poker_game - INFO - aggressive_bot wins 200 from side/main pot
+2025-12-10 09:35:13,185 - engine.poker_game - INFO - aggressive_bot wins 60 from side/main pot
+2025-12-10 09:35:13,185 - engine.poker_game - WARNING - Pot logic residual: 30
+2025-12-10 09:35:13,185 - tournament_runner - INFO - Hand #6 complete on table 1
+2025-12-10 09:35:13,185 - tournament_runner - INFO - Starting hand #7 on table 1
+2025-12-10 09:35:13,185 - engine.poker_game - INFO - conservative_bot posts small blind: 10
+2025-12-10 09:35:13,185 - engine.poker_game - INFO - aggressive_bot posts big blind: 20
+2025-12-10 09:35:13,185 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,185 - engine.poker_game - INFO - Dealer: random_bot
+2025-12-10 09:35:13,185 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[7♥, Q♣]) (chips: 1110)
+2025-12-10 09:35:13,185 - engine.poker_game - INFO - random_bot has PlayerHand(cards=[J♥, 9♣]) (chips: 970)
+2025-12-10 09:35:13,185 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[K♠, 6♥]) (chips: 890)
+2025-12-10 09:35:13,185 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,186 - engine.poker_game - INFO -   random_bot folds
+2025-12-10 09:35:13,186 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,186 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,186 - engine.poker_game - INFO - Pot: 30
+2025-12-10 09:35:13,186 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,186 - tournament_runner - INFO - Hand #7 complete on table 1
+2025-12-10 09:35:13,186 - tournament_runner - INFO - Starting hand #8 on table 1
+2025-12-10 09:35:13,186 - engine.poker_game - INFO - aggressive_bot posts small blind: 10
+2025-12-10 09:35:13,186 - engine.poker_game - INFO - random_bot posts big blind: 20
+2025-12-10 09:35:13,186 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,186 - engine.poker_game - INFO - Dealer: conservative_bot
+2025-12-10 09:35:13,186 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[K♥, 7♥]) (chips: 1100)
+2025-12-10 09:35:13,186 - engine.poker_game - INFO - random_bot has PlayerHand(cards=[8♥, J♣]) (chips: 950)
+2025-12-10 09:35:13,186 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[Q♦, 5♥]) (chips: 890)
+2025-12-10 09:35:13,186 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,187 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,187 - engine.poker_game - INFO -   aggressive_bot calls 10
+2025-12-10 09:35:13,187 - engine.poker_game - INFO -   random_bot raises to 45
+2025-12-10 09:35:13,187 - engine.poker_game - INFO -   aggressive_bot folds
+2025-12-10 09:35:13,187 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,187 - engine.poker_game - INFO - Pot: 65
+2025-12-10 09:35:13,187 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,187 - engine.poker_game - INFO - random_bot wins 20 from side/main pot
+2025-12-10 09:35:13,187 - engine.poker_game - INFO - random_bot wins 15 from side/main pot
+2025-12-10 09:35:13,187 - engine.poker_game - WARNING - Pot logic residual: 30
+2025-12-10 09:35:13,187 - tournament_runner - INFO - Hand #8 complete on table 1
+2025-12-10 09:35:13,187 - tournament_runner - INFO - Starting hand #9 on table 1
+2025-12-10 09:35:13,187 - engine.poker_game - INFO - random_bot posts small blind: 10
+2025-12-10 09:35:13,187 - engine.poker_game - INFO - conservative_bot posts big blind: 20
+2025-12-10 09:35:13,187 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,188 - engine.poker_game - INFO - Dealer: aggressive_bot
+2025-12-10 09:35:13,188 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[A♣, 10♥]) (chips: 1090)
+2025-12-10 09:35:13,188 - engine.poker_game - INFO - random_bot has PlayerHand(cards=[3♦, 3♣]) (chips: 980)
+2025-12-10 09:35:13,188 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[7♠, Q♠]) (chips: 870)
+2025-12-10 09:35:13,188 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,188 - engine.poker_game - INFO -   aggressive_bot folds
+2025-12-10 09:35:13,188 - engine.poker_game - INFO -   random_bot goes all-in for 980
+2025-12-10 09:35:13,188 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,188 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,188 - engine.poker_game - INFO - Pot: 1010
+2025-12-10 09:35:13,188 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,188 - engine.poker_game - INFO - random_bot wins 980 from side/main pot
+2025-12-10 09:35:13,188 - engine.poker_game - WARNING - Pot logic residual: 30
+2025-12-10 09:35:13,188 - tournament_runner - INFO - Hand #9 complete on table 1
+2025-12-10 09:35:13,189 - tournament_runner - INFO - Starting hand #10 on table 1
+2025-12-10 09:35:13,189 - engine.poker_game - INFO - conservative_bot posts small blind: 10
+2025-12-10 09:35:13,189 - engine.poker_game - INFO - aggressive_bot posts big blind: 20
+2025-12-10 09:35:13,189 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,189 - engine.poker_game - INFO - Dealer: random_bot
+2025-12-10 09:35:13,189 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[8♥, 4♦]) (chips: 1070)
+2025-12-10 09:35:13,189 - engine.poker_game - INFO - random_bot has PlayerHand(cards=[3♥, 9♠]) (chips: 1010)
+2025-12-10 09:35:13,189 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[Q♦, 3♣]) (chips: 860)
+2025-12-10 09:35:13,189 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,189 - engine.poker_game - INFO -   random_bot goes all-in for 1010
+2025-12-10 09:35:13,189 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,189 - engine.poker_game - INFO -   aggressive_bot calls 990
+2025-12-10 09:35:13,189 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,189 - engine.poker_game - INFO - Pot: 2030
+2025-12-10 09:35:13,189 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,189 - engine.poker_game - INFO - FLOP: [5♦, 5♥, Q♠]
+2025-12-10 09:35:13,189 - engine.poker_game - INFO - 
+--- FLOP BETTING ---
+2025-12-10 09:35:13,190 - engine.poker_game - INFO -   aggressive_bot goes all-in with 80
+2025-12-10 09:35:13,190 - engine.poker_game - INFO - Community Cards: [5♦, 5♥, Q♠]
+2025-12-10 09:35:13,190 - engine.poker_game - INFO - Pot: 2110
+2025-12-10 09:35:13,190 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,190 - engine.poker_game - INFO - TURN: A♦
+2025-12-10 09:35:13,190 - engine.poker_game - INFO - 
+--- TURN BETTING ---
+2025-12-10 09:35:13,190 - engine.poker_game - INFO - Community Cards: [5♦, 5♥, Q♠, A♦]
+2025-12-10 09:35:13,190 - engine.poker_game - INFO - Pot: 2110
+2025-12-10 09:35:13,190 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,190 - engine.poker_game - INFO - RIVER: 4♥
+2025-12-10 09:35:13,190 - engine.poker_game - INFO - 
+--- RIVER BETTING ---
+2025-12-10 09:35:13,190 - engine.poker_game - INFO - Community Cards: [5♦, 5♥, Q♠, A♦, 4♥]
+2025-12-10 09:35:13,190 - engine.poker_game - INFO - Pot: 2110
+2025-12-10 09:35:13,190 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,191 - engine.poker_game - INFO - 
+--- SHOWDOWN ---
+2025-12-10 09:35:13,191 - engine.poker_game - INFO -   aggressive_bot: Hand: [8♥, 4♦] -> two_pair [4♦, 5♦, 5♥, A♦, 4♥]
+2025-12-10 09:35:13,191 - engine.poker_game - INFO -   random_bot: Hand: [3♥, 9♠] -> pair [9♠, 5♦, 5♥, Q♠, A♦]
+2025-12-10 09:35:13,191 - engine.poker_game - INFO - WINNERS: aggressive_bot
+2025-12-10 09:35:13,192 - engine.poker_game - INFO - aggressive_bot wins 2020 from side/main pot
+2025-12-10 09:35:13,192 - engine.poker_game - INFO - aggressive_bot wins 60 from side/main pot
+2025-12-10 09:35:13,192 - engine.poker_game - WARNING - Pot logic residual: 30
+2025-12-10 09:35:13,192 - tournament.table_1 - INFO - Player random_bot eliminated from table 1 on hand 9
+2025-12-10 09:35:13,192 - tournament - INFO - Player random_bot eliminated in position 3
+2025-12-10 09:35:13,192 - tournament_runner - INFO - Hand #10 complete on table 1
+2025-12-10 09:35:13,192 - tournament_runner - INFO - Starting hand #11 on table 1
+2025-12-10 09:35:13,192 - engine.poker_game - INFO - aggressive_bot posts small blind: 10
+2025-12-10 09:35:13,192 - engine.poker_game - INFO - conservative_bot posts big blind: 20
+2025-12-10 09:35:13,192 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,192 - engine.poker_game - INFO - Dealer: aggressive_bot
+2025-12-10 09:35:13,192 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[5♣, 8♦]) (chips: 2100)
+2025-12-10 09:35:13,192 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[4♦, 9♠]) (chips: 840)
+2025-12-10 09:35:13,192 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,193 - engine.poker_game - INFO -   aggressive_bot raises to 60
+2025-12-10 09:35:13,193 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,193 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,193 - engine.poker_game - INFO - Pot: 80
+2025-12-10 09:35:13,193 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,193 - engine.poker_game - INFO - aggressive_bot wins 50 from side/main pot
+2025-12-10 09:35:13,193 - engine.poker_game - WARNING - Pot logic residual: 30
+2025-12-10 09:35:13,193 - tournament_runner - INFO - Hand #11 complete on table 1
+2025-12-10 09:35:13,193 - tournament_runner - INFO - Starting hand #12 on table 1
+2025-12-10 09:35:13,193 - engine.poker_game - INFO - conservative_bot posts small blind: 10
+2025-12-10 09:35:13,193 - engine.poker_game - INFO - aggressive_bot posts big blind: 20
+2025-12-10 09:35:13,193 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,193 - engine.poker_game - INFO - Dealer: conservative_bot
+2025-12-10 09:35:13,193 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[9♥, 10♠]) (chips: 2110)
+2025-12-10 09:35:13,194 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[9♠, 2♥]) (chips: 830)
+2025-12-10 09:35:13,194 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,194 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,194 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,194 - engine.poker_game - INFO - Pot: 30
+2025-12-10 09:35:13,194 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,194 - tournament_runner - INFO - Hand #12 complete on table 1
+2025-12-10 09:35:13,194 - tournament_runner - INFO - Starting hand #13 on table 1
+2025-12-10 09:35:13,194 - engine.poker_game - INFO - aggressive_bot posts small blind: 10
+2025-12-10 09:35:13,194 - engine.poker_game - INFO - conservative_bot posts big blind: 20
+2025-12-10 09:35:13,194 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,194 - engine.poker_game - INFO - Dealer: aggressive_bot
+2025-12-10 09:35:13,195 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[4♣, Q♥]) (chips: 2100)
+2025-12-10 09:35:13,195 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[4♥, 3♥]) (chips: 810)
+2025-12-10 09:35:13,195 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,195 - engine.poker_game - INFO -   aggressive_bot calls 10
+2025-12-10 09:35:13,195 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,195 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,195 - engine.poker_game - INFO - Pot: 40
+2025-12-10 09:35:13,195 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,195 - engine.poker_game - INFO - aggressive_bot wins 10 from side/main pot
+2025-12-10 09:35:13,195 - engine.poker_game - WARNING - Pot logic residual: 30
+2025-12-10 09:35:13,195 - tournament_runner - INFO - Hand #13 complete on table 1
+2025-12-10 09:35:13,195 - tournament_runner - INFO - Starting hand #14 on table 1
+2025-12-10 09:35:13,195 - engine.poker_game - INFO - conservative_bot posts small blind: 10
+2025-12-10 09:35:13,195 - engine.poker_game - INFO - aggressive_bot posts big blind: 20
+2025-12-10 09:35:13,195 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,196 - engine.poker_game - INFO - Dealer: conservative_bot
+2025-12-10 09:35:13,196 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[6♣, Q♠]) (chips: 2110)
+2025-12-10 09:35:13,196 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[8♥, 2♠]) (chips: 800)
+2025-12-10 09:35:13,196 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,196 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,196 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,196 - engine.poker_game - INFO - Pot: 30
+2025-12-10 09:35:13,196 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,196 - tournament_runner - INFO - Hand #14 complete on table 1
+2025-12-10 09:35:13,196 - tournament_runner - INFO - Starting hand #15 on table 1
+2025-12-10 09:35:13,196 - engine.poker_game - INFO - aggressive_bot posts small blind: 10
+2025-12-10 09:35:13,196 - engine.poker_game - INFO - conservative_bot posts big blind: 20
+2025-12-10 09:35:13,196 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,196 - engine.poker_game - INFO - Dealer: aggressive_bot
+2025-12-10 09:35:13,196 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[4♠, 6♦]) (chips: 2100)
+2025-12-10 09:35:13,197 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[6♥, 8♥]) (chips: 780)
+2025-12-10 09:35:13,197 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,197 - engine.poker_game - INFO -   aggressive_bot folds
+2025-12-10 09:35:13,197 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,197 - engine.poker_game - INFO - Pot: 30
+2025-12-10 09:35:13,197 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,197 - tournament_runner - INFO - Hand #15 complete on table 1
+2025-12-10 09:35:13,197 - tournament_runner - INFO - Starting hand #16 on table 1
+2025-12-10 09:35:13,197 - engine.poker_game - INFO - conservative_bot posts small blind: 10
+2025-12-10 09:35:13,197 - engine.poker_game - INFO - aggressive_bot posts big blind: 20
+2025-12-10 09:35:13,197 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,197 - engine.poker_game - INFO - Dealer: conservative_bot
+2025-12-10 09:35:13,197 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[8♣, 10♠]) (chips: 2080)
+2025-12-10 09:35:13,197 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[K♣, A♣]) (chips: 770)
+2025-12-10 09:35:13,197 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,197 - engine.poker_game - INFO -   conservative_bot raises to 40
+2025-12-10 09:35:13,198 - engine.poker_game - INFO -   aggressive_bot raises to 80
+2025-12-10 09:35:13,198 - engine.poker_game - INFO -   conservative_bot raises to 120
+2025-12-10 09:35:13,198 - engine.poker_game - INFO -   aggressive_bot folds
+2025-12-10 09:35:13,198 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,198 - engine.poker_game - INFO - Pot: 200
+2025-12-10 09:35:13,198 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,198 - engine.poker_game - INFO - conservative_bot wins 120 from side/main pot
+2025-12-10 09:35:13,198 - engine.poker_game - INFO - conservative_bot wins 50 from side/main pot
+2025-12-10 09:35:13,198 - engine.poker_game - WARNING - Pot logic residual: 30
+2025-12-10 09:35:13,198 - tournament_runner - INFO - Hand #16 complete on table 1
+2025-12-10 09:35:13,198 - tournament_runner - INFO - Starting hand #17 on table 1
+2025-12-10 09:35:13,198 - engine.poker_game - INFO - aggressive_bot posts small blind: 10
+2025-12-10 09:35:13,198 - engine.poker_game - INFO - conservative_bot posts big blind: 20
+2025-12-10 09:35:13,198 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,198 - engine.poker_game - INFO - Dealer: aggressive_bot
+2025-12-10 09:35:13,198 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[5♥, 10♣]) (chips: 2010)
+2025-12-10 09:35:13,198 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[6♥, 8♥]) (chips: 840)
+2025-12-10 09:35:13,199 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,199 - engine.poker_game - INFO -   aggressive_bot calls 10
+2025-12-10 09:35:13,199 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,199 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,199 - engine.poker_game - INFO - Pot: 40
+2025-12-10 09:35:13,199 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,199 - engine.poker_game - INFO - aggressive_bot wins 10 from side/main pot
+2025-12-10 09:35:13,199 - engine.poker_game - WARNING - Pot logic residual: 30
+2025-12-10 09:35:13,199 - tournament_runner - INFO - Hand #17 complete on table 1
+2025-12-10 09:35:13,199 - tournament_runner - INFO - Starting hand #18 on table 1
+2025-12-10 09:35:13,199 - engine.poker_game - INFO - conservative_bot posts small blind: 10
+2025-12-10 09:35:13,199 - engine.poker_game - INFO - aggressive_bot posts big blind: 20
+2025-12-10 09:35:13,199 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,199 - engine.poker_game - INFO - Dealer: conservative_bot
+2025-12-10 09:35:13,200 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[6♠, 3♠]) (chips: 2020)
+2025-12-10 09:35:13,200 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[10♣, 3♥]) (chips: 830)
+2025-12-10 09:35:13,200 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,200 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,200 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,200 - engine.poker_game - INFO - Pot: 30
+2025-12-10 09:35:13,200 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,200 - tournament_runner - INFO - Hand #18 complete on table 1
+2025-12-10 09:35:13,200 - tournament_runner - INFO - Starting hand #19 on table 1
+2025-12-10 09:35:13,200 - engine.poker_game - INFO - aggressive_bot posts small blind: 10
+2025-12-10 09:35:13,200 - engine.poker_game - INFO - conservative_bot posts big blind: 20
+2025-12-10 09:35:13,200 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,200 - engine.poker_game - INFO - Dealer: aggressive_bot
+2025-12-10 09:35:13,200 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[K♣, 10♠]) (chips: 2010)
+2025-12-10 09:35:13,200 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[6♠, 7♦]) (chips: 810)
+2025-12-10 09:35:13,200 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,200 - engine.poker_game - INFO -   aggressive_bot raises to 60
+2025-12-10 09:35:13,201 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,201 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,201 - engine.poker_game - INFO - Pot: 80
+2025-12-10 09:35:13,201 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,201 - engine.poker_game - INFO - aggressive_bot wins 50 from side/main pot
+2025-12-10 09:35:13,201 - engine.poker_game - WARNING - Pot logic residual: 30
+2025-12-10 09:35:13,201 - tournament_runner - INFO - Hand #19 complete on table 1
+2025-12-10 09:35:13,201 - tournament_runner - INFO - Starting hand #20 on table 1
+2025-12-10 09:35:13,201 - engine.poker_game - INFO - conservative_bot posts small blind: 10
+2025-12-10 09:35:13,201 - engine.poker_game - INFO - aggressive_bot posts big blind: 20
+2025-12-10 09:35:13,201 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,201 - engine.poker_game - INFO - Dealer: conservative_bot
+2025-12-10 09:35:13,201 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[2♠, 4♥]) (chips: 2020)
+2025-12-10 09:35:13,201 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[J♣, 2♦]) (chips: 800)
+2025-12-10 09:35:13,201 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,201 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,201 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,201 - engine.poker_game - INFO - Pot: 30
+2025-12-10 09:35:13,201 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,202 - tournament_runner - INFO - Hand #20 complete on table 1
+2025-12-10 09:35:13,202 - tournament_runner - INFO - Starting hand #21 on table 1
+2025-12-10 09:35:13,202 - engine.poker_game - INFO - aggressive_bot posts small blind: 10
+2025-12-10 09:35:13,202 - engine.poker_game - INFO - conservative_bot posts big blind: 20
+2025-12-10 09:35:13,202 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,202 - engine.poker_game - INFO - Dealer: aggressive_bot
+2025-12-10 09:35:13,202 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[Q♠, 4♠]) (chips: 2010)
+2025-12-10 09:35:13,202 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[3♥, 2♠]) (chips: 780)
+2025-12-10 09:35:13,202 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,202 - engine.poker_game - INFO -   aggressive_bot folds
+2025-12-10 09:35:13,202 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,202 - engine.poker_game - INFO - Pot: 30
+2025-12-10 09:35:13,202 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,202 - tournament_runner - INFO - Hand #21 complete on table 1
+2025-12-10 09:35:13,203 - tournament_runner - INFO - Starting hand #22 on table 1
+2025-12-10 09:35:13,203 - engine.poker_game - INFO - conservative_bot posts small blind: 10
+2025-12-10 09:35:13,203 - engine.poker_game - INFO - aggressive_bot posts big blind: 20
+2025-12-10 09:35:13,203 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,203 - engine.poker_game - INFO - Dealer: conservative_bot
+2025-12-10 09:35:13,203 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[K♥, J♥]) (chips: 1990)
+2025-12-10 09:35:13,203 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[5♠, 6♠]) (chips: 770)
+2025-12-10 09:35:13,203 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,203 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,203 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,203 - engine.poker_game - INFO - Pot: 30
+2025-12-10 09:35:13,203 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,203 - tournament_runner - INFO - Hand #22 complete on table 1
+2025-12-10 09:35:13,203 - tournament_runner - INFO - Starting hand #23 on table 1
+2025-12-10 09:35:13,203 - engine.poker_game - INFO - aggressive_bot posts small blind: 10
+2025-12-10 09:35:13,204 - engine.poker_game - INFO - conservative_bot posts big blind: 20
+2025-12-10 09:35:13,204 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,204 - engine.poker_game - INFO - Dealer: aggressive_bot
+2025-12-10 09:35:13,204 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[4♥, 8♠]) (chips: 1980)
+2025-12-10 09:35:13,204 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[6♦, 9♣]) (chips: 750)
+2025-12-10 09:35:13,204 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,204 - engine.poker_game - INFO -   aggressive_bot calls 10
+2025-12-10 09:35:13,204 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,204 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,204 - engine.poker_game - INFO - Pot: 40
+2025-12-10 09:35:13,204 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,204 - engine.poker_game - INFO - aggressive_bot wins 10 from side/main pot
+2025-12-10 09:35:13,204 - engine.poker_game - WARNING - Pot logic residual: 30
+2025-12-10 09:35:13,204 - tournament_runner - INFO - Hand #23 complete on table 1
+2025-12-10 09:35:13,205 - tournament_runner - INFO - Starting hand #24 on table 1
+2025-12-10 09:35:13,205 - engine.poker_game - INFO - conservative_bot posts small blind: 10
+2025-12-10 09:35:13,205 - engine.poker_game - INFO - aggressive_bot posts big blind: 20
+2025-12-10 09:35:13,205 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,205 - engine.poker_game - INFO - Dealer: conservative_bot
+2025-12-10 09:35:13,205 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[J♦, 2♠]) (chips: 1990)
+2025-12-10 09:35:13,205 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[K♥, 6♥]) (chips: 740)
+2025-12-10 09:35:13,205 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,205 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,205 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,205 - engine.poker_game - INFO - Pot: 30
+2025-12-10 09:35:13,205 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,205 - tournament_runner - INFO - Hand #24 complete on table 1
+2025-12-10 09:35:13,205 - tournament_runner - INFO - Starting hand #25 on table 1
+2025-12-10 09:35:13,205 - engine.poker_game - INFO - aggressive_bot posts small blind: 10
+2025-12-10 09:35:13,205 - engine.poker_game - INFO - conservative_bot posts big blind: 20
+2025-12-10 09:35:13,206 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,206 - engine.poker_game - INFO - Dealer: aggressive_bot
+2025-12-10 09:35:13,206 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[5♠, 4♦]) (chips: 1980)
+2025-12-10 09:35:13,206 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[3♣, 3♦]) (chips: 720)
+2025-12-10 09:35:13,206 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,206 - engine.poker_game - INFO -   aggressive_bot calls 10
+2025-12-10 09:35:13,206 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,206 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,206 - engine.poker_game - INFO - Pot: 40
+2025-12-10 09:35:13,206 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,206 - engine.poker_game - INFO - aggressive_bot wins 10 from side/main pot
+2025-12-10 09:35:13,206 - engine.poker_game - WARNING - Pot logic residual: 30
+2025-12-10 09:35:13,206 - tournament_runner - INFO - Hand #25 complete on table 1
+2025-12-10 09:35:13,206 - tournament_runner - INFO - Starting hand #26 on table 1
+2025-12-10 09:35:13,206 - engine.poker_game - INFO - conservative_bot posts small blind: 10
+2025-12-10 09:35:13,206 - engine.poker_game - INFO - aggressive_bot posts big blind: 20
+2025-12-10 09:35:13,207 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,207 - engine.poker_game - INFO - Dealer: conservative_bot
+2025-12-10 09:35:13,207 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[6♠, 3♣]) (chips: 1990)
+2025-12-10 09:35:13,207 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[7♣, 10♦]) (chips: 710)
+2025-12-10 09:35:13,207 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,207 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,207 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,207 - engine.poker_game - INFO - Pot: 30
+2025-12-10 09:35:13,207 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,207 - tournament_runner - INFO - Hand #26 complete on table 1
+2025-12-10 09:35:13,207 - tournament_runner - INFO - Starting hand #27 on table 1
+2025-12-10 09:35:13,207 - engine.poker_game - INFO - aggressive_bot posts small blind: 10
+2025-12-10 09:35:13,207 - engine.poker_game - INFO - conservative_bot posts big blind: 20
+2025-12-10 09:35:13,207 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,207 - engine.poker_game - INFO - Dealer: aggressive_bot
+2025-12-10 09:35:13,207 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[Q♥, 5♥]) (chips: 1980)
+2025-12-10 09:35:13,208 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[K♦, A♦]) (chips: 690)
+2025-12-10 09:35:13,208 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,208 - engine.poker_game - INFO -   aggressive_bot calls 10
+2025-12-10 09:35:13,208 - engine.poker_game - INFO -   conservative_bot raises to 40
+2025-12-10 09:35:13,208 - engine.poker_game - INFO -   aggressive_bot folds
+2025-12-10 09:35:13,208 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,208 - engine.poker_game - INFO - Pot: 60
+2025-12-10 09:35:13,208 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,208 - engine.poker_game - INFO - conservative_bot wins 20 from side/main pot
+2025-12-10 09:35:13,208 - engine.poker_game - INFO - conservative_bot wins 10 from side/main pot
+2025-12-10 09:35:13,208 - engine.poker_game - WARNING - Pot logic residual: 30
+2025-12-10 09:35:13,208 - tournament_runner - INFO - Hand #27 complete on table 1
+2025-12-10 09:35:13,208 - tournament_runner - INFO - Starting hand #28 on table 1
+2025-12-10 09:35:13,208 - engine.poker_game - INFO - conservative_bot posts small blind: 10
+2025-12-10 09:35:13,208 - engine.poker_game - INFO - aggressive_bot posts big blind: 20
+2025-12-10 09:35:13,209 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,209 - engine.poker_game - INFO - Dealer: conservative_bot
+2025-12-10 09:35:13,209 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[10♠, 10♥]) (chips: 1950)
+2025-12-10 09:35:13,209 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[3♥, Q♥]) (chips: 720)
+2025-12-10 09:35:13,209 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,209 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,209 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,209 - engine.poker_game - INFO - Pot: 30
+2025-12-10 09:35:13,209 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,209 - tournament_runner - INFO - Hand #28 complete on table 1
+2025-12-10 09:35:13,209 - tournament_runner - INFO - Starting hand #29 on table 1
+2025-12-10 09:35:13,209 - engine.poker_game - INFO - aggressive_bot posts small blind: 10
+2025-12-10 09:35:13,209 - engine.poker_game - INFO - conservative_bot posts big blind: 20
+2025-12-10 09:35:13,210 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,210 - engine.poker_game - INFO - Dealer: aggressive_bot
+2025-12-10 09:35:13,210 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[3♦, J♥]) (chips: 1940)
+2025-12-10 09:35:13,210 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[10♥, J♠]) (chips: 700)
+2025-12-10 09:35:13,210 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,210 - engine.poker_game - INFO -   aggressive_bot calls 10
+2025-12-10 09:35:13,210 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,210 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,210 - engine.poker_game - INFO - Pot: 40
+2025-12-10 09:35:13,210 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,210 - engine.poker_game - INFO - aggressive_bot wins 10 from side/main pot
+2025-12-10 09:35:13,210 - engine.poker_game - WARNING - Pot logic residual: 30
+2025-12-10 09:35:13,210 - tournament_runner - INFO - Hand #29 complete on table 1
+2025-12-10 09:35:13,211 - tournament_runner - INFO - Starting hand #30 on table 1
+2025-12-10 09:35:13,211 - engine.poker_game - INFO - conservative_bot posts small blind: 10
+2025-12-10 09:35:13,211 - engine.poker_game - INFO - aggressive_bot posts big blind: 20
+2025-12-10 09:35:13,211 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,211 - engine.poker_game - INFO - Dealer: conservative_bot
+2025-12-10 09:35:13,211 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[4♥, Q♠]) (chips: 1950)
+2025-12-10 09:35:13,211 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[4♣, 6♣]) (chips: 690)
+2025-12-10 09:35:13,211 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,211 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,211 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,211 - engine.poker_game - INFO - Pot: 30
+2025-12-10 09:35:13,211 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,211 - tournament_runner - INFO - Hand #30 complete on table 1
+2025-12-10 09:35:13,212 - tournament_runner - INFO - Starting hand #31 on table 1
+2025-12-10 09:35:13,212 - engine.poker_game - INFO - aggressive_bot posts small blind: 10
+2025-12-10 09:35:13,212 - engine.poker_game - INFO - conservative_bot posts big blind: 20
+2025-12-10 09:35:13,212 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,212 - engine.poker_game - INFO - Dealer: aggressive_bot
+2025-12-10 09:35:13,212 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[10♦, Q♥]) (chips: 1940)
+2025-12-10 09:35:13,212 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[8♠, 3♣]) (chips: 670)
+2025-12-10 09:35:13,212 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,212 - engine.poker_game - INFO -   aggressive_bot calls 10
+2025-12-10 09:35:13,212 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,212 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,212 - engine.poker_game - INFO - Pot: 40
+2025-12-10 09:35:13,212 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,212 - engine.poker_game - INFO - aggressive_bot wins 10 from side/main pot
+2025-12-10 09:35:13,212 - engine.poker_game - WARNING - Pot logic residual: 30
+2025-12-10 09:35:13,212 - tournament_runner - INFO - Hand #31 complete on table 1
+2025-12-10 09:35:13,212 - tournament_runner - INFO - Starting hand #32 on table 1
+2025-12-10 09:35:13,212 - engine.poker_game - INFO - conservative_bot posts small blind: 10
+2025-12-10 09:35:13,212 - engine.poker_game - INFO - aggressive_bot posts big blind: 20
+2025-12-10 09:35:13,213 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,213 - engine.poker_game - INFO - Dealer: conservative_bot
+2025-12-10 09:35:13,213 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[9♥, 2♦]) (chips: 1950)
+2025-12-10 09:35:13,213 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[Q♦, 10♦]) (chips: 660)
+2025-12-10 09:35:13,213 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,213 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,213 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,213 - engine.poker_game - INFO - Pot: 30
+2025-12-10 09:35:13,213 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,213 - tournament_runner - INFO - Hand #32 complete on table 1
+2025-12-10 09:35:13,213 - tournament_runner - INFO - Starting hand #33 on table 1
+2025-12-10 09:35:13,213 - engine.poker_game - INFO - aggressive_bot posts small blind: 10
+2025-12-10 09:35:13,213 - engine.poker_game - INFO - conservative_bot posts big blind: 20
+2025-12-10 09:35:13,213 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,214 - engine.poker_game - INFO - Dealer: aggressive_bot
+2025-12-10 09:35:13,214 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[5♠, 10♠]) (chips: 1940)
+2025-12-10 09:35:13,214 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[4♣, 8♠]) (chips: 640)
+2025-12-10 09:35:13,214 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,214 - engine.poker_game - INFO -   aggressive_bot calls 10
+2025-12-10 09:35:13,214 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,214 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,214 - engine.poker_game - INFO - Pot: 40
+2025-12-10 09:35:13,214 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,214 - engine.poker_game - INFO - aggressive_bot wins 10 from side/main pot
+2025-12-10 09:35:13,214 - engine.poker_game - WARNING - Pot logic residual: 30
+2025-12-10 09:35:13,214 - tournament_runner - INFO - Hand #33 complete on table 1
+2025-12-10 09:35:13,214 - tournament_runner - INFO - Starting hand #34 on table 1
+2025-12-10 09:35:13,215 - engine.poker_game - INFO - conservative_bot posts small blind: 10
+2025-12-10 09:35:13,215 - engine.poker_game - INFO - aggressive_bot posts big blind: 20
+2025-12-10 09:35:13,215 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,215 - engine.poker_game - INFO - Dealer: conservative_bot
+2025-12-10 09:35:13,215 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[5♣, 7♠]) (chips: 1950)
+2025-12-10 09:35:13,215 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[K♣, 9♣]) (chips: 630)
+2025-12-10 09:35:13,215 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,215 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,215 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,215 - engine.poker_game - INFO - Pot: 30
+2025-12-10 09:35:13,215 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,215 - tournament_runner - INFO - Hand #34 complete on table 1
+2025-12-10 09:35:13,215 - tournament_runner - INFO - Starting hand #35 on table 1
+2025-12-10 09:35:13,216 - engine.poker_game - INFO - aggressive_bot posts small blind: 10
+2025-12-10 09:35:13,216 - engine.poker_game - INFO - conservative_bot posts big blind: 20
+2025-12-10 09:35:13,216 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,216 - engine.poker_game - INFO - Dealer: aggressive_bot
+2025-12-10 09:35:13,216 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[A♣, K♣]) (chips: 1940)
+2025-12-10 09:35:13,216 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[6♣, 10♥]) (chips: 610)
+2025-12-10 09:35:13,216 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,216 - engine.poker_game - INFO -   aggressive_bot calls 10
+2025-12-10 09:35:13,216 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,216 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,216 - engine.poker_game - INFO - Pot: 40
+2025-12-10 09:35:13,216 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,216 - engine.poker_game - INFO - aggressive_bot wins 10 from side/main pot
+2025-12-10 09:35:13,216 - engine.poker_game - WARNING - Pot logic residual: 30
+2025-12-10 09:35:13,216 - tournament_runner - INFO - Hand #35 complete on table 1
+2025-12-10 09:35:13,216 - tournament_runner - INFO - Starting hand #36 on table 1
+2025-12-10 09:35:13,217 - engine.poker_game - INFO - conservative_bot posts small blind: 10
+2025-12-10 09:35:13,217 - engine.poker_game - INFO - aggressive_bot posts big blind: 20
+2025-12-10 09:35:13,217 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,217 - engine.poker_game - INFO - Dealer: conservative_bot
+2025-12-10 09:35:13,217 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[6♥, 10♦]) (chips: 1950)
+2025-12-10 09:35:13,217 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[2♥, K♥]) (chips: 600)
+2025-12-10 09:35:13,217 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,217 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,217 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,217 - engine.poker_game - INFO - Pot: 30
+2025-12-10 09:35:13,217 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,217 - tournament_runner - INFO - Hand #36 complete on table 1
+2025-12-10 09:35:13,217 - tournament_runner - INFO - Starting hand #37 on table 1
+2025-12-10 09:35:13,217 - engine.poker_game - INFO - aggressive_bot posts small blind: 10
+2025-12-10 09:35:13,217 - engine.poker_game - INFO - conservative_bot posts big blind: 20
+2025-12-10 09:35:13,217 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,217 - engine.poker_game - INFO - Dealer: aggressive_bot
+2025-12-10 09:35:13,218 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[7♣, 2♠]) (chips: 1940)
+2025-12-10 09:35:13,218 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[9♦, Q♦]) (chips: 580)
+2025-12-10 09:35:13,218 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,218 - engine.poker_game - INFO -   aggressive_bot folds
+2025-12-10 09:35:13,218 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,218 - engine.poker_game - INFO - Pot: 30
+2025-12-10 09:35:13,218 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,218 - tournament_runner - INFO - Hand #37 complete on table 1
+2025-12-10 09:35:13,218 - tournament_runner - INFO - Starting hand #38 on table 1
+2025-12-10 09:35:13,218 - engine.poker_game - INFO - conservative_bot posts small blind: 10
+2025-12-10 09:35:13,218 - engine.poker_game - INFO - aggressive_bot posts big blind: 20
+2025-12-10 09:35:13,218 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,218 - engine.poker_game - INFO - Dealer: conservative_bot
+2025-12-10 09:35:13,218 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[10♣, 7♠]) (chips: 1920)
+2025-12-10 09:35:13,218 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[3♥, 4♣]) (chips: 570)
+2025-12-10 09:35:13,218 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,218 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,218 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,219 - engine.poker_game - INFO - Pot: 30
+2025-12-10 09:35:13,219 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,219 - tournament_runner - INFO - Hand #38 complete on table 1
+2025-12-10 09:35:13,219 - tournament_runner - INFO - Starting hand #39 on table 1
+2025-12-10 09:35:13,219 - engine.poker_game - INFO - aggressive_bot posts small blind: 10
+2025-12-10 09:35:13,219 - engine.poker_game - INFO - conservative_bot posts big blind: 20
+2025-12-10 09:35:13,219 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,219 - engine.poker_game - INFO - Dealer: aggressive_bot
+2025-12-10 09:35:13,219 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[9♣, A♣]) (chips: 1910)
+2025-12-10 09:35:13,219 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[6♠, 9♥]) (chips: 550)
+2025-12-10 09:35:13,219 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,219 - engine.poker_game - INFO -   aggressive_bot raises to 60
+2025-12-10 09:35:13,219 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,219 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,219 - engine.poker_game - INFO - Pot: 80
+2025-12-10 09:35:13,219 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,219 - engine.poker_game - INFO - aggressive_bot wins 50 from side/main pot
+2025-12-10 09:35:13,220 - engine.poker_game - WARNING - Pot logic residual: 30
+2025-12-10 09:35:13,220 - tournament_runner - INFO - Hand #39 complete on table 1
+2025-12-10 09:35:13,220 - tournament_runner - INFO - Starting hand #40 on table 1
+2025-12-10 09:35:13,220 - engine.poker_game - INFO - conservative_bot posts small blind: 10
+2025-12-10 09:35:13,220 - engine.poker_game - INFO - aggressive_bot posts big blind: 20
+2025-12-10 09:35:13,220 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,220 - engine.poker_game - INFO - Dealer: conservative_bot
+2025-12-10 09:35:13,220 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[5♦, 8♠]) (chips: 1920)
+2025-12-10 09:35:13,220 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[7♠, J♥]) (chips: 540)
+2025-12-10 09:35:13,220 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,220 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,220 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,220 - engine.poker_game - INFO - Pot: 30
+2025-12-10 09:35:13,220 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,220 - tournament_runner - INFO - Hand #40 complete on table 1
+2025-12-10 09:35:13,220 - tournament_runner - INFO - Starting hand #41 on table 1
+2025-12-10 09:35:13,220 - engine.poker_game - INFO - aggressive_bot posts small blind: 10
+2025-12-10 09:35:13,220 - engine.poker_game - INFO - conservative_bot posts big blind: 20
+2025-12-10 09:35:13,220 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,220 - engine.poker_game - INFO - Dealer: aggressive_bot
+2025-12-10 09:35:13,221 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[7♦, Q♦]) (chips: 1910)
+2025-12-10 09:35:13,221 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[A♥, 8♦]) (chips: 520)
+2025-12-10 09:35:13,221 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,221 - engine.poker_game - INFO -   aggressive_bot folds
+2025-12-10 09:35:13,221 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,221 - engine.poker_game - INFO - Pot: 30
+2025-12-10 09:35:13,221 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,221 - tournament_runner - INFO - Hand #41 complete on table 1
+2025-12-10 09:35:13,221 - tournament_runner - INFO - Starting hand #42 on table 1
+2025-12-10 09:35:13,221 - engine.poker_game - INFO - conservative_bot posts small blind: 10
+2025-12-10 09:35:13,221 - engine.poker_game - INFO - aggressive_bot posts big blind: 20
+2025-12-10 09:35:13,221 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,221 - engine.poker_game - INFO - Dealer: conservative_bot
+2025-12-10 09:35:13,221 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[4♣, 9♦]) (chips: 1890)
+2025-12-10 09:35:13,221 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[Q♠, 3♥]) (chips: 510)
+2025-12-10 09:35:13,221 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,221 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,222 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,222 - engine.poker_game - INFO - Pot: 30
+2025-12-10 09:35:13,222 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,222 - tournament_runner - INFO - Hand #42 complete on table 1
+2025-12-10 09:35:13,222 - tournament_runner - INFO - Starting hand #43 on table 1
+2025-12-10 09:35:13,222 - engine.poker_game - INFO - aggressive_bot posts small blind: 10
+2025-12-10 09:35:13,222 - engine.poker_game - INFO - conservative_bot posts big blind: 20
+2025-12-10 09:35:13,222 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,222 - engine.poker_game - INFO - Dealer: aggressive_bot
+2025-12-10 09:35:13,222 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[Q♥, 6♥]) (chips: 1880)
+2025-12-10 09:35:13,222 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[8♦, 7♥]) (chips: 490)
+2025-12-10 09:35:13,222 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,222 - engine.poker_game - INFO -   aggressive_bot calls 10
+2025-12-10 09:35:13,222 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,223 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,223 - engine.poker_game - INFO - Pot: 40
+2025-12-10 09:35:13,223 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,223 - engine.poker_game - INFO - aggressive_bot wins 10 from side/main pot
+2025-12-10 09:35:13,223 - engine.poker_game - WARNING - Pot logic residual: 30
+2025-12-10 09:35:13,223 - tournament_runner - INFO - Hand #43 complete on table 1
+2025-12-10 09:35:13,223 - tournament_runner - INFO - Starting hand #44 on table 1
+2025-12-10 09:35:13,223 - engine.poker_game - INFO - conservative_bot posts small blind: 10
+2025-12-10 09:35:13,223 - engine.poker_game - INFO - aggressive_bot posts big blind: 20
+2025-12-10 09:35:13,223 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,223 - engine.poker_game - INFO - Dealer: conservative_bot
+2025-12-10 09:35:13,223 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[10♠, A♠]) (chips: 1890)
+2025-12-10 09:35:13,223 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[Q♦, 2♠]) (chips: 480)
+2025-12-10 09:35:13,223 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,223 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,223 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,223 - engine.poker_game - INFO - Pot: 30
+2025-12-10 09:35:13,224 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,224 - tournament_runner - INFO - Hand #44 complete on table 1
+2025-12-10 09:35:13,224 - tournament_runner - INFO - Starting hand #45 on table 1
+2025-12-10 09:35:13,224 - engine.poker_game - INFO - aggressive_bot posts small blind: 10
+2025-12-10 09:35:13,224 - engine.poker_game - INFO - conservative_bot posts big blind: 20
+2025-12-10 09:35:13,224 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,224 - engine.poker_game - INFO - Dealer: aggressive_bot
+2025-12-10 09:35:13,224 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[Q♣, 10♥]) (chips: 1880)
+2025-12-10 09:35:13,224 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[K♠, A♣]) (chips: 460)
+2025-12-10 09:35:13,224 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,224 - engine.poker_game - INFO -   aggressive_bot folds
+2025-12-10 09:35:13,224 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,224 - engine.poker_game - INFO - Pot: 30
+2025-12-10 09:35:13,224 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,224 - tournament_runner - INFO - Hand #45 complete on table 1
+2025-12-10 09:35:13,224 - tournament_runner - INFO - Starting hand #46 on table 1
+2025-12-10 09:35:13,225 - engine.poker_game - INFO - conservative_bot posts small blind: 10
+2025-12-10 09:35:13,225 - engine.poker_game - INFO - aggressive_bot posts big blind: 20
+2025-12-10 09:35:13,225 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,225 - engine.poker_game - INFO - Dealer: conservative_bot
+2025-12-10 09:35:13,225 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[4♣, 9♥]) (chips: 1860)
+2025-12-10 09:35:13,225 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[J♥, A♠]) (chips: 450)
+2025-12-10 09:35:13,225 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,225 - engine.poker_game - INFO -   conservative_bot raises to 40
+2025-12-10 09:35:13,225 - engine.poker_game - INFO -   aggressive_bot raises to 60
+2025-12-10 09:35:13,226 - engine.poker_game - INFO -   conservative_bot raises to 93
+2025-12-10 09:35:13,226 - engine.poker_game - INFO -   aggressive_bot raises to 126
+2025-12-10 09:35:13,226 - engine.poker_game - INFO -   conservative_bot raises to 199
+2025-12-10 09:35:13,226 - engine.poker_game - INFO -   aggressive_bot calls 73
+2025-12-10 09:35:13,226 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,226 - engine.poker_game - INFO - Pot: 398
+2025-12-10 09:35:13,226 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,226 - engine.poker_game - INFO - FLOP: [3♣, K♥, K♠]
+2025-12-10 09:35:13,226 - engine.poker_game - INFO - 
+--- FLOP BETTING ---
+2025-12-10 09:35:13,226 - engine.poker_game - INFO -   aggressive_bot raises to 398
+2025-12-10 09:35:13,227 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,227 - engine.poker_game - INFO - Community Cards: [3♣, K♥, K♠]
+2025-12-10 09:35:13,227 - engine.poker_game - INFO - Pot: 796
+2025-12-10 09:35:13,227 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,227 - engine.poker_game - INFO - aggressive_bot wins 378 from side/main pot
+2025-12-10 09:35:13,227 - engine.poker_game - INFO - aggressive_bot wins 388 from side/main pot
+2025-12-10 09:35:13,227 - engine.poker_game - WARNING - Pot logic residual: 30
+2025-12-10 09:35:13,227 - tournament_runner - INFO - Hand #46 complete on table 1
+2025-12-10 09:35:13,227 - tournament_runner - INFO - Starting hand #47 on table 1
+2025-12-10 09:35:13,227 - engine.poker_game - INFO - aggressive_bot posts small blind: 10
+2025-12-10 09:35:13,227 - engine.poker_game - INFO - conservative_bot posts big blind: 20
+2025-12-10 09:35:13,227 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,227 - engine.poker_game - INFO - Dealer: aggressive_bot
+2025-12-10 09:35:13,227 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[6♣, 5♥]) (chips: 2069)
+2025-12-10 09:35:13,228 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[2♥, 7♥]) (chips: 241)
+2025-12-10 09:35:13,228 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,228 - engine.poker_game - INFO -   aggressive_bot raises to 80
+2025-12-10 09:35:13,228 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,228 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,228 - engine.poker_game - INFO - Pot: 100
+2025-12-10 09:35:13,228 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,228 - engine.poker_game - INFO - aggressive_bot wins 70 from side/main pot
+2025-12-10 09:35:13,228 - engine.poker_game - WARNING - Pot logic residual: 30
+2025-12-10 09:35:13,228 - tournament_runner - INFO - Hand #47 complete on table 1
+2025-12-10 09:35:13,228 - tournament_runner - INFO - Starting hand #48 on table 1
+2025-12-10 09:35:13,228 - engine.poker_game - INFO - conservative_bot posts small blind: 10
+2025-12-10 09:35:13,228 - engine.poker_game - INFO - aggressive_bot posts big blind: 20
+2025-12-10 09:35:13,229 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,229 - engine.poker_game - INFO - Dealer: conservative_bot
+2025-12-10 09:35:13,229 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[7♦, 4♠]) (chips: 2079)
+2025-12-10 09:35:13,229 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[J♦, 7♠]) (chips: 231)
+2025-12-10 09:35:13,229 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,229 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,229 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,229 - engine.poker_game - INFO - Pot: 30
+2025-12-10 09:35:13,229 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,229 - tournament_runner - INFO - Hand #48 complete on table 1
+2025-12-10 09:35:13,229 - tournament_runner - INFO - Starting hand #49 on table 1
+2025-12-10 09:35:13,229 - engine.poker_game - INFO - aggressive_bot posts small blind: 10
+2025-12-10 09:35:13,229 - engine.poker_game - INFO - conservative_bot posts big blind: 20
+2025-12-10 09:35:13,229 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,229 - engine.poker_game - INFO - Dealer: aggressive_bot
+2025-12-10 09:35:13,229 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[K♦, 2♠]) (chips: 2069)
+2025-12-10 09:35:13,230 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[Q♠, 5♥]) (chips: 211)
+2025-12-10 09:35:13,230 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,230 - engine.poker_game - INFO -   aggressive_bot calls 10
+2025-12-10 09:35:13,230 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,230 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,230 - engine.poker_game - INFO - Pot: 40
+2025-12-10 09:35:13,230 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,230 - engine.poker_game - INFO - aggressive_bot wins 10 from side/main pot
+2025-12-10 09:35:13,230 - engine.poker_game - WARNING - Pot logic residual: 30
+2025-12-10 09:35:13,230 - tournament_runner - INFO - Hand #49 complete on table 1
+2025-12-10 09:35:13,230 - tournament_runner - INFO - Starting hand #50 on table 1
+2025-12-10 09:35:13,230 - engine.poker_game - INFO - conservative_bot posts small blind: 10
+2025-12-10 09:35:13,230 - engine.poker_game - INFO - aggressive_bot posts big blind: 20
+2025-12-10 09:35:13,231 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,231 - engine.poker_game - INFO - Dealer: conservative_bot
+2025-12-10 09:35:13,231 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[K♠, A♦]) (chips: 2079)
+2025-12-10 09:35:13,231 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[Q♦, 8♠]) (chips: 201)
+2025-12-10 09:35:13,231 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,231 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,231 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,231 - engine.poker_game - INFO - Pot: 30
+2025-12-10 09:35:13,231 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,231 - tournament_runner - INFO - Hand #50 complete on table 1
+2025-12-10 09:35:13,231 - tournament_runner - INFO - Starting hand #51 on table 1
+2025-12-10 09:35:13,231 - engine.poker_game - INFO - aggressive_bot posts small blind: 10
+2025-12-10 09:35:13,232 - engine.poker_game - INFO - conservative_bot posts big blind: 20
+2025-12-10 09:35:13,232 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,232 - engine.poker_game - INFO - Dealer: aggressive_bot
+2025-12-10 09:35:13,232 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[K♣, 4♥]) (chips: 2069)
+2025-12-10 09:35:13,232 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[J♥, 5♠]) (chips: 181)
+2025-12-10 09:35:13,232 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,232 - engine.poker_game - INFO -   aggressive_bot calls 10
+2025-12-10 09:35:13,232 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,232 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,232 - engine.poker_game - INFO - Pot: 40
+2025-12-10 09:35:13,232 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,232 - engine.poker_game - INFO - aggressive_bot wins 10 from side/main pot
+2025-12-10 09:35:13,232 - engine.poker_game - WARNING - Pot logic residual: 30
+2025-12-10 09:35:13,232 - tournament_runner - INFO - Hand #51 complete on table 1
+2025-12-10 09:35:13,232 - tournament_runner - INFO - Starting hand #52 on table 1
+2025-12-10 09:35:13,232 - engine.poker_game - INFO - conservative_bot posts small blind: 10
+2025-12-10 09:35:13,232 - engine.poker_game - INFO - aggressive_bot posts big blind: 20
+2025-12-10 09:35:13,233 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,233 - engine.poker_game - INFO - Dealer: conservative_bot
+2025-12-10 09:35:13,233 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[J♣, 8♠]) (chips: 2079)
+2025-12-10 09:35:13,233 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[10♥, 6♣]) (chips: 171)
+2025-12-10 09:35:13,233 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,233 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,233 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,233 - engine.poker_game - INFO - Pot: 30
+2025-12-10 09:35:13,233 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,233 - tournament_runner - INFO - Hand #52 complete on table 1
+2025-12-10 09:35:13,233 - tournament_runner - INFO - Starting hand #53 on table 1
+2025-12-10 09:35:13,233 - engine.poker_game - INFO - aggressive_bot posts small blind: 10
+2025-12-10 09:35:13,233 - engine.poker_game - INFO - conservative_bot posts big blind: 20
+2025-12-10 09:35:13,233 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,233 - engine.poker_game - INFO - Dealer: aggressive_bot
+2025-12-10 09:35:13,233 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[7♦, Q♥]) (chips: 2069)
+2025-12-10 09:35:13,233 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[9♥, 2♦]) (chips: 151)
+2025-12-10 09:35:13,233 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,234 - engine.poker_game - INFO -   aggressive_bot folds
+2025-12-10 09:35:13,234 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,234 - engine.poker_game - INFO - Pot: 30
+2025-12-10 09:35:13,234 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,234 - tournament_runner - INFO - Hand #53 complete on table 1
+2025-12-10 09:35:13,234 - tournament_runner - INFO - Starting hand #54 on table 1
+2025-12-10 09:35:13,234 - engine.poker_game - INFO - conservative_bot posts small blind: 10
+2025-12-10 09:35:13,234 - engine.poker_game - INFO - aggressive_bot posts big blind: 20
+2025-12-10 09:35:13,234 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,234 - engine.poker_game - INFO - Dealer: conservative_bot
+2025-12-10 09:35:13,234 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[5♦, J♥]) (chips: 2049)
+2025-12-10 09:35:13,234 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[4♠, 3♦]) (chips: 141)
+2025-12-10 09:35:13,234 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,234 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,235 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,235 - engine.poker_game - INFO - Pot: 30
+2025-12-10 09:35:13,235 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,235 - tournament_runner - INFO - Hand #54 complete on table 1
+2025-12-10 09:35:13,235 - tournament_runner - INFO - Starting hand #55 on table 1
+2025-12-10 09:35:13,235 - engine.poker_game - INFO - aggressive_bot posts small blind: 10
+2025-12-10 09:35:13,235 - engine.poker_game - INFO - conservative_bot posts big blind: 20
+2025-12-10 09:35:13,235 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,235 - engine.poker_game - INFO - Dealer: aggressive_bot
+2025-12-10 09:35:13,235 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[Q♠, 10♦]) (chips: 2039)
+2025-12-10 09:35:13,235 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[10♠, 5♠]) (chips: 121)
+2025-12-10 09:35:13,235 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,235 - engine.poker_game - INFO -   aggressive_bot calls 10
+2025-12-10 09:35:13,235 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,235 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,235 - engine.poker_game - INFO - Pot: 40
+2025-12-10 09:35:13,235 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,236 - engine.poker_game - INFO - aggressive_bot wins 10 from side/main pot
+2025-12-10 09:35:13,236 - engine.poker_game - WARNING - Pot logic residual: 30
+2025-12-10 09:35:13,236 - tournament_runner - INFO - Hand #55 complete on table 1
+2025-12-10 09:35:13,236 - tournament_runner - INFO - Starting hand #56 on table 1
+2025-12-10 09:35:13,236 - engine.poker_game - INFO - conservative_bot posts small blind: 10
+2025-12-10 09:35:13,236 - engine.poker_game - INFO - aggressive_bot posts big blind: 20
+2025-12-10 09:35:13,236 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,236 - engine.poker_game - INFO - Dealer: conservative_bot
+2025-12-10 09:35:13,236 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[5♦, 5♠]) (chips: 2049)
+2025-12-10 09:35:13,236 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[2♠, 2♥]) (chips: 111)
+2025-12-10 09:35:13,236 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,236 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,236 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,236 - engine.poker_game - INFO - Pot: 30
+2025-12-10 09:35:13,236 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,236 - tournament_runner - INFO - Hand #56 complete on table 1
+2025-12-10 09:35:13,236 - tournament_runner - INFO - Starting hand #57 on table 1
+2025-12-10 09:35:13,237 - engine.poker_game - INFO - aggressive_bot posts small blind: 10
+2025-12-10 09:35:13,237 - engine.poker_game - INFO - conservative_bot posts big blind: 20
+2025-12-10 09:35:13,237 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,237 - engine.poker_game - INFO - Dealer: aggressive_bot
+2025-12-10 09:35:13,237 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[9♠, 3♠]) (chips: 2039)
+2025-12-10 09:35:13,237 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[7♦, J♣]) (chips: 91)
+2025-12-10 09:35:13,237 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,237 - engine.poker_game - INFO -   aggressive_bot raises to 80
+2025-12-10 09:35:13,237 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,237 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,237 - engine.poker_game - INFO - Pot: 100
+2025-12-10 09:35:13,237 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,237 - engine.poker_game - INFO - aggressive_bot wins 70 from side/main pot
+2025-12-10 09:35:13,237 - engine.poker_game - WARNING - Pot logic residual: 30
+2025-12-10 09:35:13,237 - tournament_runner - INFO - Hand #57 complete on table 1
+2025-12-10 09:35:13,237 - tournament_runner - INFO - Starting hand #58 on table 1
+2025-12-10 09:35:13,238 - engine.poker_game - INFO - conservative_bot posts small blind: 10
+2025-12-10 09:35:13,238 - engine.poker_game - INFO - aggressive_bot posts big blind: 20
+2025-12-10 09:35:13,238 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,238 - engine.poker_game - INFO - Dealer: conservative_bot
+2025-12-10 09:35:13,238 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[K♥, 4♠]) (chips: 2049)
+2025-12-10 09:35:13,238 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[J♦, 8♦]) (chips: 81)
+2025-12-10 09:35:13,238 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,238 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,238 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,238 - engine.poker_game - INFO - Pot: 30
+2025-12-10 09:35:13,238 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,238 - tournament_runner - INFO - Hand #58 complete on table 1
+2025-12-10 09:35:13,238 - tournament_runner - INFO - Starting hand #59 on table 1
+2025-12-10 09:35:13,238 - engine.poker_game - INFO - aggressive_bot posts small blind: 10
+2025-12-10 09:35:13,238 - engine.poker_game - INFO - conservative_bot posts big blind: 20
+2025-12-10 09:35:13,238 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,238 - engine.poker_game - INFO - Dealer: aggressive_bot
+2025-12-10 09:35:13,239 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[A♥, K♣]) (chips: 2039)
+2025-12-10 09:35:13,239 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[4♥, 10♦]) (chips: 61)
+2025-12-10 09:35:13,239 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,239 - engine.poker_game - INFO -   aggressive_bot raises to 80
+2025-12-10 09:35:13,239 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,239 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,239 - engine.poker_game - INFO - Pot: 100
+2025-12-10 09:35:13,239 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,239 - engine.poker_game - INFO - aggressive_bot wins 70 from side/main pot
+2025-12-10 09:35:13,239 - engine.poker_game - WARNING - Pot logic residual: 30
+2025-12-10 09:35:13,239 - tournament_runner - INFO - Hand #59 complete on table 1
+2025-12-10 09:35:13,239 - tournament_runner - INFO - Starting hand #60 on table 1
+2025-12-10 09:35:13,239 - engine.poker_game - INFO - conservative_bot posts small blind: 10
+2025-12-10 09:35:13,239 - engine.poker_game - INFO - aggressive_bot posts big blind: 20
+2025-12-10 09:35:13,239 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,239 - engine.poker_game - INFO - Dealer: conservative_bot
+2025-12-10 09:35:13,239 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[K♣, 5♠]) (chips: 2049)
+2025-12-10 09:35:13,239 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[9♥, 10♦]) (chips: 51)
+2025-12-10 09:35:13,239 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,239 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,240 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,240 - engine.poker_game - INFO - Pot: 30
+2025-12-10 09:35:13,240 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,240 - tournament_runner - INFO - Hand #60 complete on table 1
+2025-12-10 09:35:13,240 - tournament_runner - INFO - Starting hand #61 on table 1
+2025-12-10 09:35:13,240 - engine.poker_game - INFO - aggressive_bot posts small blind: 10
+2025-12-10 09:35:13,240 - engine.poker_game - INFO - conservative_bot posts big blind: 20
+2025-12-10 09:35:13,240 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,240 - engine.poker_game - INFO - Dealer: aggressive_bot
+2025-12-10 09:35:13,240 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[A♣, 10♣]) (chips: 2039)
+2025-12-10 09:35:13,240 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[7♦, 5♠]) (chips: 31)
+2025-12-10 09:35:13,240 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,240 - engine.poker_game - INFO -   aggressive_bot raises to 80
+2025-12-10 09:35:13,240 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,240 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,240 - engine.poker_game - INFO - Pot: 100
+2025-12-10 09:35:13,240 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,240 - engine.poker_game - INFO - aggressive_bot wins 70 from side/main pot
+2025-12-10 09:35:13,241 - engine.poker_game - WARNING - Pot logic residual: 30
+2025-12-10 09:35:13,241 - tournament_runner - INFO - Hand #61 complete on table 1
+2025-12-10 09:35:13,241 - tournament_runner - INFO - Starting hand #62 on table 1
+2025-12-10 09:35:13,241 - engine.poker_game - INFO - conservative_bot posts small blind: 10
+2025-12-10 09:35:13,241 - engine.poker_game - INFO - aggressive_bot posts big blind: 20
+2025-12-10 09:35:13,241 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,241 - engine.poker_game - INFO - Dealer: conservative_bot
+2025-12-10 09:35:13,241 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[Q♦, 3♠]) (chips: 2049)
+2025-12-10 09:35:13,241 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[A♣, 10♠]) (chips: 21)
+2025-12-10 09:35:13,241 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,241 - engine.poker_game - INFO -   conservative_bot folds
+2025-12-10 09:35:13,241 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,241 - engine.poker_game - INFO - Pot: 30
+2025-12-10 09:35:13,242 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,242 - tournament_runner - INFO - Hand #62 complete on table 1
+2025-12-10 09:35:13,242 - tournament_runner - INFO - Starting hand #63 on table 1
+2025-12-10 09:35:13,242 - engine.poker_game - INFO - aggressive_bot posts small blind: 10
+2025-12-10 09:35:13,242 - engine.poker_game - INFO - conservative_bot posts big blind: 20
+2025-12-10 09:35:13,242 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,242 - engine.poker_game - INFO - Dealer: aggressive_bot
+2025-12-10 09:35:13,242 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[9♥, 3♦]) (chips: 2039)
+2025-12-10 09:35:13,242 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[5♥, Q♠]) (chips: 1)
+2025-12-10 09:35:13,242 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,242 - engine.poker_game - INFO -   aggressive_bot folds
+2025-12-10 09:35:13,242 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,242 - engine.poker_game - INFO - Pot: 30
+2025-12-10 09:35:13,243 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,243 - tournament_runner - INFO - Hand #63 complete on table 1
+2025-12-10 09:35:13,243 - tournament_runner - INFO - Starting hand #64 on table 1
+2025-12-10 09:35:13,243 - engine.poker_game - INFO - conservative_bot posts small blind: 1
+2025-12-10 09:35:13,243 - engine.poker_game - INFO - aggressive_bot posts big blind: 20
+2025-12-10 09:35:13,243 - engine.poker_game - INFO - 
+==============================
+--- NEW HAND ---
+2025-12-10 09:35:13,243 - engine.poker_game - INFO - Dealer: conservative_bot
+2025-12-10 09:35:13,243 - engine.poker_game - INFO - aggressive_bot has PlayerHand(cards=[6♣, A♣]) (chips: 2019)
+2025-12-10 09:35:13,243 - engine.poker_game - INFO - conservative_bot has PlayerHand(cards=[3♣, 5♥]) (chips: 0)
+2025-12-10 09:35:13,243 - engine.poker_game - INFO - 
+--- PRE-FLOP BETTING ---
+2025-12-10 09:35:13,243 - engine.poker_game - INFO -   aggressive_bot raises to 80
+2025-12-10 09:35:13,244 - engine.poker_game - INFO - Community Cards: []
+2025-12-10 09:35:13,244 - engine.poker_game - INFO - Pot: 81
+2025-12-10 09:35:13,244 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,244 - engine.poker_game - INFO - FLOP: [8♣, J♦, K♣]
+2025-12-10 09:35:13,244 - engine.poker_game - INFO - 
+--- FLOP BETTING ---
+2025-12-10 09:35:13,244 - engine.poker_game - INFO -   aggressive_bot raises to 40
+2025-12-10 09:35:13,244 - engine.poker_game - INFO - Community Cards: [8♣, J♦, K♣]
+2025-12-10 09:35:13,244 - engine.poker_game - INFO - Pot: 121
+2025-12-10 09:35:13,244 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,244 - engine.poker_game - INFO - TURN: 10♣
+2025-12-10 09:35:13,244 - engine.poker_game - INFO - 
+--- TURN BETTING ---
+2025-12-10 09:35:13,244 - engine.poker_game - INFO -   aggressive_bot raises to 121
+2025-12-10 09:35:13,244 - engine.poker_game - INFO - Community Cards: [8♣, J♦, K♣, 10♣]
+2025-12-10 09:35:13,244 - engine.poker_game - INFO - Pot: 242
+2025-12-10 09:35:13,244 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,244 - engine.poker_game - INFO - RIVER: J♣
+2025-12-10 09:35:13,245 - engine.poker_game - INFO - 
+--- RIVER BETTING ---
+2025-12-10 09:35:13,245 - engine.poker_game - INFO -   aggressive_bot raises to 242
+2025-12-10 09:35:13,245 - engine.poker_game - INFO - Community Cards: [8♣, J♦, K♣, 10♣, J♣]
+2025-12-10 09:35:13,245 - engine.poker_game - INFO - Pot: 484
+2025-12-10 09:35:13,245 - engine.poker_game - INFO - --------------------
+2025-12-10 09:35:13,245 - engine.poker_game - INFO - 
+--- SHOWDOWN ---
+2025-12-10 09:35:13,245 - engine.poker_game - INFO -   aggressive_bot: Hand: [6♣, A♣] -> flush [A♣, 8♣, K♣, 10♣, J♣]
+2025-12-10 09:35:13,245 - engine.poker_game - INFO -   conservative_bot: Hand: [3♣, 5♥] -> flush [3♣, 8♣, K♣, 10♣, J♣]
+2025-12-10 09:35:13,246 - engine.poker_game - INFO - WINNERS: aggressive_bot
+2025-12-10 09:35:13,246 - engine.poker_game - INFO - aggressive_bot wins 463 from side/main pot
+2025-12-10 09:35:13,246 - engine.poker_game - WARNING - Pot logic residual: 21
+2025-12-10 09:35:13,246 - tournament.table_1 - INFO - Player conservative_bot eliminated from table 1 on hand 63
+2025-12-10 09:35:13,246 - tournament - INFO - Player conservative_bot eliminated in position 2
+2025-12-10 09:35:13,246 - tournament - INFO - Tournament complete! Winner: aggressive_bot
+2025-12-10 09:35:13,246 - tournament_runner - INFO - Hand #64 complete on table 1
+2025-12-10 09:35:13,247 - tournament_runner - INFO - Tournament results saved to logs\results_20251210_093513.json

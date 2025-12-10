@@ -15,10 +15,10 @@ import time
 # Add backend to path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'backend'))
 
-from backend.tournament_runner import TournamentRunner, TournamentSettings, TournamentType
-from backend.bot_manager import BotManager
-from backend.engine.poker_game import PokerGame, PlayerAction
-from backend.tournament import PokerTournament
+from tournament_runner import TournamentRunner, TournamentSettings, TournamentType
+from bot_manager import BotManager
+from engine.poker_game import PokerGame, PlayerAction
+from tournament import PokerTournament
 
 app = Flask(__name__)
 CORS(app)
@@ -63,7 +63,7 @@ logging.getLogger().setLevel(logging.INFO)
 def get_available_bots():
     """Get list of available bots from the players directory"""
     try:
-        bot_manager = BotManager("backend/players", 10.0)
+        bot_manager = BotManager("players", 10.0)
         loaded_bots = bot_manager.load_all_bots()
         
         bots_info = []
@@ -113,7 +113,7 @@ def initialize_tournament():
             tournament_state['settings'] = settings
             
             # Load bot manager
-            bot_manager = BotManager("backend/players", 10.0)
+            bot_manager = BotManager("players", 10.0)
             bot_manager.load_all_bots()
             
             # Create unique player names for duplicate bots
@@ -141,7 +141,7 @@ def initialize_tournament():
                 if bot_id in bot_manager.bots:
                     original_bot = bot_manager.bots[bot_id]
                     # Create a new wrapper with the unique name
-                    from backend.bot_manager import BotWrapper
+                    from bot_manager import BotWrapper
                     
                     # Get the bot class and create a new instance
                     bot_instance = original_bot.bot.__class__(player_name)
@@ -229,6 +229,7 @@ def step_tournament():
                     # Update tournament chip counts
                     for player_id, chips in final_chips.items():
                         tournament.update_player_chips(player_id, chips)
+                        logging.info(f"Player {player_id} has {chips} chips")
                     
                     tournament.tables[table_id].dealer_button = game.dealer_button
             

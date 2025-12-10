@@ -35,7 +35,7 @@ async function loadAvailableBots() {
     try {
         const response = await fetch(`${API_BASE_URL}/bots`);
         const data = await response.json();
-        
+
         if (data.success) {
             state.availableBots = data.bots;
             renderBotList();
@@ -54,9 +54,9 @@ function setupLogStreaming() {
     if (state.eventSource) {
         state.eventSource.close();
     }
-    
+
     state.eventSource = new EventSource(`${API_BASE_URL}/logs/stream`);
-    
+
     state.eventSource.onmessage = (event) => {
         try {
             const logEntry = JSON.parse(event.data);
@@ -68,7 +68,7 @@ function setupLogStreaming() {
             // Ignore parse errors
         }
     };
-    
+
     state.eventSource.onerror = () => {
         logToConsole('Log stream disconnected', 'event-error');
     };
@@ -77,23 +77,23 @@ function setupLogStreaming() {
 // Map log levels to CSS classes
 function getLogClassName(logEntry) {
     const message = logEntry.message.toLowerCase();
-    
+
     if (message.includes('winner') || message.includes('wins')) {
         return 'event-winner';
-    } else if (message.includes('flop') || message.includes('turn') || 
-               message.includes('river') || message.includes('showdown') ||
-               message.includes('===')) {
+    } else if (message.includes('flop') || message.includes('turn') ||
+        message.includes('river') || message.includes('showdown') ||
+        message.includes('===')) {
         return 'event-phase';
     } else if (message.includes('dealt') || message.includes('deal')) {
         return 'event-deal';
-    } else if (message.includes('fold') || message.includes('call') || 
-               message.includes('raise') || message.includes('check') ||
-               message.includes('all-in')) {
+    } else if (message.includes('fold') || message.includes('call') ||
+        message.includes('raise') || message.includes('check') ||
+        message.includes('all-in')) {
         return 'event-action';
     } else if (logEntry.level === 'ERROR' || message.includes('error')) {
         return 'event-error';
     }
-    
+
     return '';
 }
 
@@ -114,17 +114,17 @@ function addBotToTable(botId) {
         alert('Cannot add bots while tournament is running');
         return;
     }
-    
+
     if (state.tablePlayers.length >= MAX_PLAYERS) {
         alert(`Maximum ${MAX_PLAYERS} players allowed`);
         return;
     }
 
     const bot = state.availableBots.find(b => b.id === botId);
-    
+
     // Allow multiple instances - add unique ID with timestamp
     const existingCount = state.tablePlayers.filter(p => p.botId === botId).length;
-    const playerId = `${botId}_${Date.now()}`;
+    const playerId = existingCount > 0 ? `${botId}_${existingCount + 1}` : botId;
     const displayName = existingCount > 0 ? `${bot.name} #${existingCount + 1}` : bot.name;
 
     const player = {
@@ -166,7 +166,7 @@ function removeBotFromTable(botId) {
         alert('Cannot remove bots while tournament is running');
         return;
     }
-    
+
     state.tablePlayers = state.tablePlayers.filter(p => p.botId !== botId);
     logToConsole(`Bot removed from table`, 'event-action');
     renderTable();
@@ -257,6 +257,7 @@ function renderTable() {
 
 // Render player cards
 function renderPlayerCards(player) {
+    console.log("Rendering cards for player:", player);
     if (!player.cards || player.cards.length === 0) {
         return '';
     }
@@ -280,7 +281,7 @@ async function initializeTournament() {
         alert(`Need at least ${MIN_PLAYERS} players to start`);
         return false;
     }
-    
+
     try {
         const response = await fetch(`${API_BASE_URL}/tournament/init`, {
             method: 'POST',
@@ -288,7 +289,7 @@ async function initializeTournament() {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                bots: state.tablePlayers.map(p => ({ 
+                bots: state.tablePlayers.map(p => ({
                     id: p.botId,
                     name: p.name,
                     frontendId: p.id  // Send frontend ID for mapping
@@ -299,9 +300,9 @@ async function initializeTournament() {
                 blind_increase_interval: 10
             })
         });
-        
+
         const data = await response.json();
-        
+
         if (data.success) {
             state.tournamentInitialized = true;
             logToConsole('Tournament initialized on backend', 'event-phase');
@@ -322,17 +323,17 @@ async function stepGame() {
         const initialized = await initializeTournament();
         if (!initialized) return;
     }
-    
+
     try {
         const response = await fetch(`${API_BASE_URL}/tournament/step`, {
             method: 'POST'
         });
-        
+
         const data = await response.json();
-        
+
         if (data.success) {
             updateFromTournamentState(data.state);
-            
+
             if (data.complete) {
                 stopGameLoop();
                 state.isPlaying = false;
@@ -353,9 +354,9 @@ async function stepGame() {
 // Update frontend state from backend tournament state
 function updateFromTournamentState(tournamentState) {
     if (!tournamentState) return;
-    
+
     state.gamesPlayed = tournamentState.handNumber;
-    
+
     // Update community cards and pot if provided
     if (tournamentState.communityCards) {
         state.communityCards = tournamentState.communityCards;
@@ -363,18 +364,20 @@ function updateFromTournamentState(tournamentState) {
     if (tournamentState.pot !== undefined) {
         state.pot = tournamentState.pot;
     }
-    
+
     // Update player chips
     for (const backendPlayer of tournamentState.players) {
-        const frontendPlayer = state.tablePlayers.find(p => {
-            // Match by bot ID, handling duplicates
-            return p.id.startsWith(backendPlayer.id) || backendPlayer.id.startsWith(p.botId);
-        });
-        
+        const coreId = backendPlayer.id.split('_')[0];
+
+        const frontendPlayer = state.tablePlayers.find(p =>
+            p.id === backendPlayer.id || p.id === coreId
+        );
+
+
         if (frontendPlayer) {
             const prevChips = frontendPlayer.chips;
             frontendPlayer.chips = backendPlayer.chips;
-            
+
             // Update cards if provided
             if (backendPlayer.cards) {
                 frontendPlayer.cards = backendPlayer.cards;
@@ -382,23 +385,23 @@ function updateFromTournamentState(tournamentState) {
             if (backendPlayer.bet !== undefined) {
                 frontendPlayer.bet = backendPlayer.bet;
             }
-            
+
             // Update statistics
             const stats = state.statistics[frontendPlayer.id];
             if (stats) {
                 const chipDelta = backendPlayer.chips - prevChips;
-                
+
                 if (chipDelta > 0) {
                     stats.wins++;
                     stats.totalChipsWon += chipDelta;
                 } else if (chipDelta < 0) {
                     stats.totalChipsLost += Math.abs(chipDelta);
                 }
-                
+
                 stats.gamesPlayed++;
-                stats.winRate = stats.gamesPlayed > 0 ? 
+                stats.winRate = stats.gamesPlayed > 0 ?
                     (stats.wins / stats.gamesPlayed * 100).toFixed(1) : 0;
-                
+
                 // Update chip history
                 state.chipHistory[frontendPlayer.id].push({
                     game: state.gamesPlayed,
@@ -407,7 +410,7 @@ function updateFromTournamentState(tournamentState) {
             }
         }
     }
-    
+
     renderTable();
     updateStatus();
     renderStatistics();
@@ -419,7 +422,7 @@ async function togglePlay() {
         const initialized = await initializeTournament();
         if (!initialized) return;
     }
-    
+
     state.isPlaying = !state.isPlaying;
 
     const playBtn = document.getElementById('playBtn');
@@ -448,7 +451,7 @@ function stopGameLoop() {
 
 // Change speed
 function changeSpeed(delta) {
-    const speeds = [0.25, 0.5, 1, 2, 4];
+    const speeds = [0.25, 1, 4, 16, 64, 256];
     let currentIndex = speeds.indexOf(state.speed);
     currentIndex = Math.max(0, Math.min(speeds.length - 1, currentIndex + delta));
     state.speed = speeds[currentIndex];
@@ -469,7 +472,7 @@ async function resetGame() {
 
     state.isPlaying = false;
     stopGameLoop();
-    
+
     try {
         await fetch(`${API_BASE_URL}/tournament/reset`, {
             method: 'POST'
@@ -477,7 +480,7 @@ async function resetGame() {
     } catch (error) {
         // Ignore errors on reset
     }
-    
+
     state.tournamentInitialized = false;
     state.gamesPlayed = 0;
 
@@ -693,6 +696,55 @@ function switchTab(tab) {
         document.getElementById('statsTab').classList.add('active');
         renderStatistics();
     }
+}
+
+// Sidebar resize
+const sidebar = document.getElementById('sidebar');
+const sidebarResize = document.getElementById('sidebarResize');
+
+sidebarResize.addEventListener('mousedown', initSidebarResize);
+
+function initSidebarResize(e) {
+    e.preventDefault();
+    window.addEventListener('mousemove', resizeSidebar);
+    window.addEventListener('mouseup', stopSidebarResize);
+}
+
+function resizeSidebar(e) {
+    const newWidth = e.clientX;
+    if (newWidth > 10 && newWidth < 500) { // min/max width
+        sidebar.style.width = newWidth + 'px';
+    }
+}
+
+function stopSidebarResize() {
+    window.removeEventListener('mousemove', resizeSidebar);
+    window.removeEventListener('mouseup', stopSidebarResize);
+}
+
+// Console resize
+const consoleEl = document.getElementById('console');
+const consoleResize = document.getElementById('consoleResize');
+
+consoleResize.addEventListener('mousedown', initConsoleResize);
+
+function initConsoleResize(e) {
+    e.preventDefault();
+    window.addEventListener('mousemove', resizeConsole);
+    window.addEventListener('mouseup', stopConsoleResize);
+}
+
+function resizeConsole(e) {
+    const containerHeight = document.querySelector('.main-content').clientHeight;
+    const newHeight = containerHeight - e.clientY;
+    if (newHeight > 20 && newHeight < 500) { // min/max height
+        consoleEl.style.height = newHeight + 'px';
+    }
+}
+
+function stopConsoleResize() {
+    window.removeEventListener('mousemove', resizeConsole);
+    window.removeEventListener('mouseup', stopConsoleResize);
 }
 
 // Initialize on load

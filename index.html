@@ -8,8 +8,9 @@
     </head>
 <body>
     <div class="container">
-        <!-- Left Sidebar -->
-        <div class="sidebar">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="resize-handle vertical" id="sidebarResize"></div>
             <div class="sidebar-header">
                 <h2>Available Bots</h2>
                 <p>Click to add to table</p>
@@ -74,7 +75,8 @@
                 </div>
 
                 <!-- Console -->
-                <div class="console-container">
+                <div class="console-container" id="console">
+                    <div class="resize-handle horizontal" id="consoleResize"></div>
                     <div class="console-header">
                         <h3>Game Console</h3>
                         <button class="console-clear" onclick="clearConsole()">Clear</button>
