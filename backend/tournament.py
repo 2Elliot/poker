@@ -4,7 +4,7 @@ Handles tournament structure, player elimination, and progression
 """
 import math
 import random
-from typing import List, Dict, Tuple, Optional
+from typing import List, Dict, Tuple, Optional, Any
 from dataclasses import dataclass
 from enum import Enum
 import logging
@@ -94,7 +94,7 @@ class TournamentTable:
 class PokerTournament:
     """Manages the entire poker tournament"""
     
-    def __init__(self, players: List[str], settings: TournamentSettings = None):
+    def __init__(self, players: List[str], settings: Optional[TournamentSettings] = None):
         self.players = players.copy()
         self.settings = settings or TournamentSettings()
         
@@ -312,7 +312,7 @@ class PokerTournament:
         self.tables[1] = TournamentTable(1, players, self.settings)
         self.logger.info(f"Consolidated to final table with {len(players)} players")
     
-    def get_tournament_status(self) -> Dict[str, any]:
+    def get_tournament_status(self) -> Dict[str, Any]:
         """Get current tournament status"""
         active_players = self.get_active_players()
         

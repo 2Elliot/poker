@@ -1,4 +1,4 @@
-from typing import List, Dict, Optional, Tuple
+from typing import Any, List, Dict, Optional, Tuple
 from dataclasses import dataclass
 from enum import Enum
 import logging
@@ -35,7 +35,7 @@ class GameState:
 class PokerGame:
     """Manages a single hand of Texas Hold'em poker"""
     
-    def __init__(self, players: Dict[str, any], starting_chips: int = 1000, 
+    def __init__(self, players: Dict[str, Any], starting_chips: int = 1000, 
                  small_blind: int = 10, big_blind: int = 20, dealer_button_index: int = 0):
         self.player_bots = players
         self.player_ids = list(players.keys())
@@ -138,7 +138,7 @@ class PokerGame:
     def deal_hole_cards(self):
         """Deal 2 cards to each active player"""
         for player in self.active_players:
-            cards = [self.deck.deal_card() for _ in range(2)]
+            cards = [card for card in [self.deck.deal_card() for _ in range(2)] if card is not None]
             self.player_hands[player] = PlayerHand(cards)
     
     def post_blinds(self):
@@ -205,6 +205,12 @@ class PokerGame:
             legal_actions = self.get_legal_actions(game_state, player_id)
             min_bet = game_state.min_bet
             max_bet = self.player_chips[player_id] + self.player_bets[player_id]
+
+            if player_hand is None:
+                self.logger.error(f"Player {player_id} has no hand")
+                self.process_action(player_id, PlayerAction.FOLD, 0)
+                self.advance_to_next_player()
+                continue
 
             action, amount = bot.get_action(game_state, player_hand.cards, legal_actions, min_bet, max_bet)
             
@@ -381,6 +387,9 @@ class PokerGame:
             self.total_pot_contributions[player] += all_in_amount
             new_bet = self.player_bets[player]
             if new_bet > self.current_bet:
+                actual_raise = new_bet - self.current_bet
+                if actual_raise >= self.min_raise:
+                    self.min_raise = actual_raise
                 self.current_bet = new_bet
                 self.players_acted.clear() 
             self.players_acted.add(player)
@@ -428,19 +437,25 @@ class PokerGame:
         """Deal the flop (3 community cards)"""
         self.deck.deal_card()  # Burn card
         for _ in range(3):
-            self.community_cards.append(self.deck.deal_card())
+            card = self.deck.deal_card()
+            if card is not None:
+                self.community_cards.append(card)
         self.logger.info(f"FLOP: [{', '.join(map(str, self.community_cards))}]")
     
     def deal_turn(self):
         """Deal the turn (4th community card)"""
         self.deck.deal_card()  # Burn card
-        self.community_cards.append(self.deck.deal_card())
+        card = self.deck.deal_card()
+        if card is not None:
+            self.community_cards.append(card)
         self.logger.info(f"TURN: {self.community_cards[-1]}")
     
     def deal_river(self):
         """Deal the river (5th community card)"""
         self.deck.deal_card()  # Burn card
-        self.community_cards.append(self.deck.deal_card())
+        card = self.deck.deal_card()
+        if card is not None:
+            self.community_cards.append(card)
         self.logger.info(f"RIVER: {self.community_cards[-1]}")
     
     def determine_winners(self) -> List[str]:
@@ -568,8 +583,8 @@ class PokerGame:
             if player_chips >= to_call:
                 legal_actions.append(PlayerAction.CALL)
         
-        # Can raise if we have chips beyond the call amount
-        if player_chips > to_call:
+        # Can raise if we have chips to meet the minimum raise
+        if (player_chips + player_bet) >= game_state.min_bet:
             legal_actions.append(PlayerAction.RAISE)
         
         # Can always go all-in if we have chips

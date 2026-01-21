@@ -3,9 +3,9 @@ Bot API Interface for Poker Tournament
 This defines the interface that all student bots must implement
 """
 from abc import ABC, abstractmethod
-from typing import List, Dict, Optional
-from engine.cards import Card
-from engine.poker_game import GameState, PlayerAction
+from typing import List, Dict, Optional, Any
+from backend.engine.cards import Card
+from backend.engine.poker_game import GameState, PlayerAction
 import logging
 
 
@@ -46,7 +46,7 @@ class PokerBotAPI(ABC):
         pass
     
     @abstractmethod
-    def hand_complete(self, game_state: GameState, hand_result: Dict[str, any]):
+    def hand_complete(self, game_state: GameState, hand_result: Dict[str, Any]):
         """
         Called when a hand is complete. Use this to learn from the results.
         
@@ -87,6 +87,7 @@ class GameInfoAPI:
     """
     
     @staticmethod
+    @staticmethod
     def get_pot_odds(pot: int, bet_to_call: int) -> float:
         """
         Calculate pot odds as a ratio.
@@ -103,7 +104,7 @@ class GameInfoAPI:
         return pot / bet_to_call
     
     @staticmethod
-    def get_position_info(game_state: GameState, player_name: str) -> Dict[str, any]:
+    def get_position_info(game_state: GameState, player_name: str) -> Dict[str, Any]:
         """
         Get position information for a player.
         

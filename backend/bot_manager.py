@@ -15,8 +15,8 @@ from contextlib import contextmanager
 import logging
 
 from bot_api import PokerBotAPI, PlayerAction
-from engine.cards import Card
-from engine.poker_game import GameState
+from backend.engine.cards import Card
+from backend.engine.poker_game import GameState
 
 
 class TimeoutException(Exception):
@@ -36,24 +36,24 @@ def timeout_handler(signum, frame):
 
 @contextmanager
 def timeout_context(seconds: float):
-    """Context manager for handling timeouts using signal.setitimer (Unix only)"""
-    # Use signal.setitimer/SIGALRM which is much lighter than threading.Timer
-    if hasattr(signal, 'setitimer') and hasattr(signal, 'SIGALRM'):
-        old_handler = signal.signal(signal.SIGALRM, timeout_handler)
-        try:
-            # Schedule the alarm
-            signal.setitimer(signal.ITIMER_REAL, seconds)
-            yield
-        finally:
-            # Disable the alarm
-            signal.setitimer(signal.ITIMER_REAL, 0)
-            # Restore old handler
-            signal.signal(signal.SIGALRM, old_handler)
-    else:
-        # Fallback for Windows (no SIGALRM), though less effective/reliable
-        # We can use the threading approach here if needed, but for now just yield
-        # to avoid the massive threading error on supported systems.
+    """Context manager for handling timeouts - Windows compatible"""
+    import threading
+    
+    timer = None
+    timed_out = [False]
+    
+    def timeout_handler():
+        timed_out[0] = True
+    
+    try:
+        timer = threading.Timer(seconds, timeout_handler)
+        timer.start()
         yield
+        if timed_out[0]:
+            raise TimeoutException("Bot action timed out")
+    finally:
+        if timer:
+            timer.cancel()
 
 
 class BotWrapper:

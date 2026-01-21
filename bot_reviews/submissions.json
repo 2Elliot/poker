@@ -1,0 +1,14 @@
+{
+  "submissions": {
+    "73847b567d45": {
+      "bot_name": "Test bot",
+      "submitter_email": "test@example.com",
+      "submission_date": "2026-01-21T13:37:32.486764",
+      "status": "pending_review",
+      "code_file": "bot_reviews\\73847b567d45.py",
+      "review_notes": [],
+      "revision_count": 0
+    }
+  },
+  "approved_bots": {}
+}
