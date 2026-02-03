@@ -1,6 +1,7 @@
 """
-Flask API Server for Poker Tournament
-Updated with security, authentication, and bot approval system
+Flask API Server for Poker Tournament - PRODUCTION READY
+Complete workflow: Submit → Review → Approve → Test
+All data persists across server restarts
 """
 from flask import Flask, jsonify, request, Response, render_template, session, redirect, url_for
 from flask_cors import CORS
@@ -10,9 +11,10 @@ import logging
 import sys
 import os
 from queue import Queue
-from threading import Thread, Lock
+from threading import Lock
 import time
 from datetime import timedelta
+import secrets
 
 # Add backend to path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'backend'))
@@ -22,35 +24,50 @@ from backend.bot_manager import BotManager
 from backend.engine.poker_game import PokerGame, PlayerAction
 from backend.tournament import PokerTournament
 
-# Import new security systems
-from secure_admin_auth import AdminAuthSystem, User, admin_required
+# Import security systems
+from secure_admin_auth import AdminAuthSystem, User
 from bot_approval_system import BotReviewSystem
 from secure_bot_storage import SecureBotStorage
+
+# ============================================================================
+# APP CONFIGURATION
+# ============================================================================
 
 app = Flask(__name__)
 CORS(app)
 
-# Security configuration
-app.secret_key = os.environ.get('SECRET_KEY', os.urandom(32))
-app.config['SESSION_COOKIE_SECURE'] = False  # Set True in production with HTTPS
+# Security configuration - PRODUCTION READY
+app.secret_key = os.environ.get('SECRET_KEY', secrets.token_hex(32))
+app.config['SESSION_COOKIE_SECURE'] = os.environ.get('FLASK_ENV') == 'production'
 app.config['SESSION_COOKIE_HTTPONLY'] = True
 app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=2)
+app.config['MAX_CONTENT_LENGTH'] = 1 * 1024 * 1024  # 1MB max file size
 
 # Flask-Login setup
 login_manager = LoginManager()
 login_manager.init_app(app)
-login_manager.login_view = "login" # type: ignore
+login_manager.login_view = 'login_page' # type: ignore
 
-# Initialize systems
+# Initialize systems - ALL DATA PERSISTS
 auth_system = AdminAuthSystem()
 review_system = BotReviewSystem()
 bot_storage = SecureBotStorage()
 
-# Master password for running tournaments (should be in env variable)
-MASTER_PASSWORD = os.environ.get('MASTER_PASSWORD', 'change-this-in-production-123')
+# Master password from environment (REQUIRED)
+MASTER_PASSWORD = os.environ.get('MASTER_PASSWORD')
+if not MASTER_PASSWORD:
+    print("=" * 80)
+    print("ERROR: MASTER_PASSWORD environment variable not set!")
+    print("=" * 80)
+    print("Please set it before starting the server:")
+    print("  Windows (PowerShell): $env:MASTER_PASSWORD = 'your-secure-password'")
+    print("  Windows (CMD):        set MASTER_PASSWORD=your-secure-password")
+    print("  Linux/Mac:            export MASTER_PASSWORD='your-secure-password'")
+    print("=" * 80)
+    sys.exit(1)
 
-# Global state
+# Tournament state (temporary, cleared on restart - this is OK)
 tournament_state = {
     'runner': None,
     'tournament': None,
@@ -64,7 +81,10 @@ tournament_state = {
 
 state_lock = Lock()
 
-# Custom log handler
+# ============================================================================
+# LOGGING SETUP
+# ============================================================================
+
 class QueueHandler(logging.Handler):
     def __init__(self, log_queue):
         super().__init__()
@@ -85,6 +105,16 @@ queue_handler.setFormatter(logging.Formatter('%(message)s'))
 logging.getLogger().addHandler(queue_handler)
 logging.getLogger().setLevel(logging.INFO)
 
+# File logging for persistence
+os.makedirs('logs', exist_ok=True)
+file_handler = logging.FileHandler('logs/server.log')
+file_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+logging.getLogger().addHandler(file_handler)
+
+
+# ============================================================================
+# FLASK-LOGIN
+# ============================================================================
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -96,12 +126,12 @@ def load_user(user_id):
 
 
 # ============================================================================
-# PUBLIC ROUTES - Bot submission and viewing
+# PUBLIC ROUTES - User bot submission and status
 # ============================================================================
 
 @app.route('/')
 def index():
-    """Main landing page - bot submission"""
+    """Main landing page - bot submission portal"""
     return render_template('submit.html')
 
 
@@ -115,7 +145,7 @@ def tournament_page():
 def get_available_bots():
     """Get list of APPROVED bots available for tournaments"""
     try:
-        # Get only approved bots from storage
+        # Only return approved bots from secure storage
         approved_bots = bot_storage.list_bots()
         
         bots_info = []
@@ -126,7 +156,7 @@ def get_available_bots():
                 'type': 'Approved Bot',
                 'wins': bot.get('wins', 0),
                 'total_games': bot.get('total_games', 0),
-                'win_rate': bot.get('win_rate', 0)
+                'win_rate': round(bot.get('win_rate', 0), 1)
             })
         
         return jsonify({
@@ -137,7 +167,7 @@ def get_available_bots():
         logging.error(f"Error getting bots: {str(e)}")
         return jsonify({
             'success': False,
-            'error': str(e)
+            'error': 'Failed to load bots'
         }), 500
 
 
@@ -146,17 +176,41 @@ def submit_bot():
     """PUBLIC - Submit a bot for review"""
     try:
         data = request.json
-        bot_name = data.get('bot_name')
-        bot_code = data.get('bot_code')
-        submitter_email = data.get('email')
-        submitter_password = data.get('password')
         
-        if not all([bot_name, bot_code, submitter_email, submitter_password]):
+        # Validate required fields
+        required_fields = ['bot_name', 'bot_code', 'email', 'password']
+        for field in required_fields:
+            if not data.get(field):
+                return jsonify({
+                    'success': False,
+                    'error': f'Missing required field: {field}'
+                }), 400
+        
+        bot_name = data['bot_name'].strip()
+        bot_code = data['bot_code']
+        submitter_email = data['email'].strip()
+        submitter_password = data['password']
+        
+        # Basic validation
+        if len(bot_name) < 3 or len(bot_name) > 50:
             return jsonify({
                 'success': False,
-                'error': 'Missing required fields'
+                'error': 'Bot name must be between 3 and 50 characters'
             }), 400
         
+        if len(submitter_password) < 12:
+            return jsonify({
+                'success': False,
+                'error': 'Password must be at least 12 characters'
+            }), 400
+        
+        if len(bot_code) > 500 * 1024:  # 500KB limit
+            return jsonify({
+                'success': False,
+                'error': 'Bot code too large (max 500KB)'
+            }), 400
+        
+        # Submit to review system
         result = review_system.submit_bot(
             bot_name=bot_name,
             bot_code=bot_code,
@@ -164,13 +218,16 @@ def submit_bot():
             submitter_password=submitter_password
         )
         
+        if result['success']:
+            logging.info(f"New bot submission: {bot_name} from {submitter_email}")
+        
         return jsonify(result)
         
     except Exception as e:
         logging.error(f"Error submitting bot: {str(e)}")
         return jsonify({
             'success': False,
-            'error': str(e)
+            'error': 'Submission failed. Please try again.'
         }), 500
 
 
@@ -178,7 +235,7 @@ def submit_bot():
 def get_my_submissions():
     """PUBLIC - Get user's bot submissions"""
     try:
-        email = request.args.get('email')
+        email = request.args.get('email', '').strip()
         if not email:
             return jsonify({
                 'success': False,
@@ -195,7 +252,7 @@ def get_my_submissions():
         logging.error(f"Error getting submissions: {str(e)}")
         return jsonify({
             'success': False,
-            'error': str(e)
+            'error': 'Failed to load submissions'
         }), 500
 
 
@@ -205,7 +262,7 @@ def resubmit_bot(submission_id):
     try:
         data = request.json
         new_code = data.get('bot_code')
-        email = data.get('email')
+        email = data.get('email', '').strip()
         
         if not all([new_code, email]):
             return jsonify({
@@ -220,7 +277,7 @@ def resubmit_bot(submission_id):
         logging.error(f"Error resubmitting bot: {str(e)}")
         return jsonify({
             'success': False,
-            'error': str(e)
+            'error': 'Resubmission failed'
         }), 500
 
 
@@ -240,9 +297,9 @@ def login_page():
 def login():
     """Admin login endpoint"""
     data = request.json
-    username = data.get('username')
-    password = data.get('password')
-    ip = request.remote_addr or '0.0.0.0'
+    username = data.get('username', '').strip()
+    password = data.get('password', '')
+    ip = request.remote_addr
     
     if not username or not password:
         return jsonify({
@@ -250,11 +307,12 @@ def login():
             "error": "Username and password required"
         }), 400
     
-    result = auth_system.authenticate(username, password, ip)
+    result = auth_system.authenticate(username, password, ip or "unknown")
     
     if result["success"]:
         login_user(result["user"], remember=True)
         session.permanent = True
+        logging.info(f"Admin login: {username} from {ip or 'unknown'}")
         return jsonify({
             "success": True,
             "message": "Login successful",
@@ -268,13 +326,11 @@ def login():
 @login_required
 def logout():
     """Admin logout endpoint"""
-    auth_system._log_audit_event(
-        "LOGOUT", 
-        current_user.username, 
-        request.remote_addr or '0.0.0.0', 
-        "User logged out"
-    )
+    username = current_user.username
+    ip = request.remote_addr
+    auth_system._log_audit_event("LOGOUT", username, ip or "unknown", "User logged out")
     logout_user()
+    logging.info(f"Admin logout: {username}")
     return jsonify({"success": True, "message": "Logged out successfully"})
 
 
@@ -291,7 +347,7 @@ def check_auth():
 
 
 # ============================================================================
-# ADMIN ROUTES - Bot Review
+# ADMIN ROUTES - Bot Review & Approval
 # ============================================================================
 
 @app.route('/admin/review')
@@ -320,7 +376,7 @@ def get_pending_submissions():
         logging.error(f"Error getting submissions: {str(e)}")
         return jsonify({
             "success": False,
-            "error": str(e)
+            "error": "Failed to load submissions"
         }), 500
 
 
@@ -339,9 +395,10 @@ def approve_submission(submission_id):
             auth_system._log_audit_event(
                 "BOT_APPROVED",
                 current_user.username,
-                request.remote_addr or '0.0.0.0',
+                request.remote_addr or "unknown",
                 f"Approved bot submission {submission_id}"
             )
+            logging.info(f"Bot approved by {current_user.username}: {submission_id}")
         
         return jsonify(result)
         
@@ -349,7 +406,7 @@ def approve_submission(submission_id):
         logging.error(f"Error approving bot: {str(e)}")
         return jsonify({
             "success": False,
-            "error": str(e)
+            "error": "Approval failed"
         }), 500
 
 
@@ -368,9 +425,10 @@ def reject_submission(submission_id):
             auth_system._log_audit_event(
                 "BOT_REJECTED",
                 current_user.username,
-                request.remote_addr or '0.0.0.0',
-                f"Rejected bot submission {submission_id}: {reason}"
+                request.remote_addr or "unknown",
+                f"Rejected bot submission {submission_id}"
             )
+            logging.info(f"Bot rejected by {current_user.username}: {submission_id}")
         
         return jsonify(result)
         
@@ -378,7 +436,7 @@ def reject_submission(submission_id):
         logging.error(f"Error rejecting bot: {str(e)}")
         return jsonify({
             "success": False,
-            "error": str(e)
+            "error": "Rejection failed"
         }), 500
 
 
@@ -397,9 +455,10 @@ def request_revision(submission_id):
             auth_system._log_audit_event(
                 "REVISION_REQUESTED",
                 current_user.username,
-                request.remote_addr or '0.0.0.0',
+                request.remote_addr or "unknown",
                 f"Requested revision for {submission_id}"
             )
+            logging.info(f"Revision requested by {current_user.username}: {submission_id}")
         
         return jsonify(result)
         
@@ -407,7 +466,7 @@ def request_revision(submission_id):
         logging.error(f"Error requesting revision: {str(e)}")
         return jsonify({
             "success": False,
-            "error": str(e)
+            "error": "Request failed"
         }), 500
 
 
@@ -423,11 +482,12 @@ def get_audit_log():
         log = auth_system.get_audit_log(limit)
         return jsonify({"success": True, "audit_log": log})
     except Exception as e:
-        return jsonify({"success": False, "error": str(e)}), 500
+        logging.error(f"Error getting audit log: {str(e)}")
+        return jsonify({"success": False, "error": "Failed to load log"}), 500
 
 
 # ============================================================================
-# TOURNAMENT ROUTES - Use approved bots only
+# TOURNAMENT ROUTES - Use approved bots from storage
 # ============================================================================
 
 @app.route('/api/tournament/init', methods=['POST'])
@@ -440,7 +500,7 @@ def initialize_tournament():
         if len(selected_bot_names) < 2:
             return jsonify({
                 'success': False,
-                'error': 'Need at least 2 bots'
+                'error': 'Need at least 2 bots to start a tournament'
             }), 400
         
         with state_lock:
@@ -457,24 +517,38 @@ def initialize_tournament():
             
             tournament_state['settings'] = settings
             
-            # Create bot manager and load approved bots
+            # Create bot manager
             from backend.bot_manager import BotWrapper
             bot_manager = BotManager("players", 10.0)
-            bot_manager.bots = {}  # Clear default bots
+            bot_manager.bots = {}  # Clear, we'll load from storage
             
-            # Load bots from secure storage using master password
+            # Load approved bots from encrypted storage
             player_names = []
             bot_count = {}
             
-            for bot_name in selected_bot_names:
-                # Load bot from encrypted storage
+            for bot_data in selected_bot_names:
+                # Handle both string and dict formats
+                if isinstance(bot_data, dict):
+                    bot_name = bot_data.get('id') or bot_data.get('name')
+                else:
+                    bot_name = bot_data
+                
+                # Skip if bot_name is None or empty
+                if not bot_name:
+                    logging.warning("Skipping bot with invalid name")
+                    continue
+                
+                # Load bot from encrypted storage using master password
+                if MASTER_PASSWORD is None:
+                    logging.error("MASTER_PASSWORD not set")
+                    continue
                 bot_instance = bot_storage.load_bot(bot_name, MASTER_PASSWORD)
                 
                 if bot_instance is None:
                     logging.warning(f"Failed to load bot: {bot_name}")
                     continue
                 
-                # Track count for duplicates
+                # Handle duplicates (same bot multiple times)
                 if bot_name not in bot_count:
                     bot_count[bot_name] = 0
                 bot_count[bot_name] += 1
@@ -490,7 +564,7 @@ def initialize_tournament():
                 
                 player_names.append(player_name)
                 
-                # Wrap bot for safety
+                # Wrap bot for safety and timeout handling
                 bot_wrapper = BotWrapper(player_name, unique_bot, 10.0)
                 bot_manager.bots[player_name] = bot_wrapper
             
@@ -511,6 +585,8 @@ def initialize_tournament():
             # Clear log queue
             while not tournament_state['log_queue'].empty():
                 tournament_state['log_queue'].get()
+            
+            logging.info(f"Tournament initialized with {len(player_names)} bots")
         
         return jsonify({
             'success': True,
@@ -523,7 +599,7 @@ def initialize_tournament():
         logging.error(traceback.format_exc())
         return jsonify({
             'success': False,
-            'error': str(e)
+            'error': 'Failed to initialize tournament'
         }), 500
 
 
@@ -542,6 +618,14 @@ def step_tournament():
                 }), 400
             
             if tournament.is_tournament_complete():
+                # Update bot statistics in storage
+                final_results = tournament.get_final_results()
+                for bot_name, chips, position in final_results:
+                    # Remove instance number suffix if present
+                    base_name = bot_name.split('_')[0] if '_' in bot_name else bot_name
+                    won = position == 1
+                    bot_storage.update_bot_stats(base_name, won)
+                
                 return jsonify({
                     'success': True,
                     'complete': True,
@@ -603,7 +687,7 @@ def step_tournament():
         logging.error(traceback.format_exc())
         return jsonify({
             'success': False,
-            'error': str(e)
+            'error': 'Tournament step failed'
         }), 500
 
 
@@ -625,9 +709,10 @@ def get_tournament_state():
                 'state': get_tournament_state_dict(tournament)
             })
     except Exception as e:
+        logging.error(f"Error getting tournament state: {str(e)}")
         return jsonify({
             'success': False,
-            'error': str(e)
+            'error': 'Failed to get state'
         }), 500
 
 
@@ -659,14 +744,16 @@ def reset_tournament():
             while not tournament_state['log_queue'].empty():
                 tournament_state['log_queue'].get()
         
+        logging.info("Tournament reset")
         return jsonify({
             'success': True,
             'message': 'Tournament reset'
         })
     except Exception as e:
+        logging.error(f"Error resetting tournament: {str(e)}")
         return jsonify({
             'success': False,
-            'error': str(e)
+            'error': 'Reset failed'
         }), 500
 
 
@@ -704,15 +791,60 @@ def get_tournament_state_dict(tournament):
     }
 
 
+# ============================================================================
+# ERROR HANDLERS
+# ============================================================================
+
+@app.errorhandler(404)
+def not_found(error):
+    return jsonify({'error': 'Not found'}), 404
+
+
+@app.errorhandler(500)
+def internal_error(error):
+    logging.error(f"Internal error: {str(error)}")
+    return jsonify({'error': 'Internal server error'}), 500
+
+
+# ============================================================================
+# STARTUP
+# ============================================================================
+
 if __name__ == '__main__':
-    print("=" * 60)
-    print("🚀 Starting Poker Tournament Server")
-    print("=" * 60)
-    print(f"API Server: http://localhost:5000")
-    print(f"Admin Panel: http://localhost:5000/admin/login")
+    print("=" * 80)
+    print("🚀 POKER TOURNAMENT SERVER - PRODUCTION READY")
+    print("=" * 80)
     print()
-    print("⚠️  IMPORTANT: Set MASTER_PASSWORD environment variable!")
-    print("   export MASTER_PASSWORD='your-secure-password'")
-    print("=" * 60)
+    print("📍 Server URLs:")
+    print(f"   User Portal:     http://localhost:5000/")
+    print(f"   Tournament:      http://localhost:5000/tournament")
+    print(f"   Admin Login:     http://localhost:5000/admin/login")
+    print()
+    print("💾 Data Persistence:")
+    print(f"   Admin accounts:  admin_auth.json")
+    print(f"   Bot submissions: bot_reviews/submissions.json")
+    print(f"   Approved bots:   encrypted_bots/metadata.json")
+    print(f"   Server logs:     logs/server.log")
+    print()
+    print("🔐 Security:")
+    print(f"   Master password: {'✓ SET' if MASTER_PASSWORD else '✗ NOT SET'}")
+    print(f"   Secret key:      {'✓ SET' if app.secret_key else '✗ NOT SET'}")
+    print()
+    print("⚠️  IMPORTANT:")
+    print("   - All bot data persists across server restarts")
+    print("   - Submissions remain in review queue")
+    print("   - Approved bots stay approved")
+    print("   - Only active tournaments are cleared on restart")
+    print()
+    print("=" * 80)
     
-    app.run(debug=True, port=5000, threaded=True)
+    # Production mode check
+    if os.environ.get('FLASK_ENV') == 'production':
+        print("🏭 PRODUCTION MODE")
+        print("   Using Waitress for production serving...")
+        from waitress import serve
+        serve(app, host='0.0.0.0', port=5000, threads=4)
+    else:
+        print("🔧 DEVELOPMENT MODE")
+        print("   For production, set: FLASK_ENV=production")
+        app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)

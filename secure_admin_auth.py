@@ -23,7 +23,7 @@ app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=2)  # Auto-logout
 
 login_manager = LoginManager()
 login_manager.init_app(app)
-login_manager.login_view = 'login' # type: ignore
+login_manager.login_view = 'login'
 
 
 class User(UserMixin):
@@ -313,7 +313,7 @@ def login():
     if not username or not password:
         return jsonify({"success": False, "error": "Username and password required"}), 400
     
-    result = auth_system.authenticate(username, password, ip or "unknown")
+    result = auth_system.authenticate(username, password, ip)
     
     if result["success"]:
         login_user(result["user"], remember=True)
@@ -331,7 +331,7 @@ def login():
 @login_required
 def logout():
     """Admin logout endpoint"""
-    auth_system._log_audit_event("LOGOUT", current_user.username, request.remote_addr or "unknown", "User logged out")
+    auth_system._log_audit_event("LOGOUT", current_user.username, request.remote_addr, "User logged out")
     logout_user()
     return jsonify({"success": True, "message": "Logged out successfully"})
 
@@ -398,7 +398,7 @@ def approve_submission(submission_id):
     auth_system._log_audit_event(
         "BOT_APPROVED", 
         current_user.username, 
-        request.remote_addr or "unknown",
+        request.remote_addr, 
         f"Approved bot {submission_id}"
     )
     
