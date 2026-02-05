@@ -239,16 +239,6 @@
             </div>
         </form>
 
-        <div class="security-info">
-            <h3>Security Features Active</h3>
-            <ul>
-                <li>Rate limiting (5 attempts per minute)</li>
-                <li>Account lockout after 5 failed attempts</li>
-                <li>Session auto-expires after 2 hours</li>
-                <li>All actions are logged and audited</li>
-            </ul>
-        </div>
-
         <div class="footer">
             Poker Bot Tournament System v1.0
         </div>
@@ -256,7 +246,7 @@
 
     <script>
         let loginAttempts = 0;
-        const MAX_ATTEMPTS = 5;
+        const MAX_ATTEMPTS = 8;
 
         function showAlert(message, type = 'error') {
             const alertBox = document.getElementById('alertBox');
