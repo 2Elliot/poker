@@ -81,14 +81,11 @@ class EmailNotifier:
                     <strong>Status:</strong> Pending Review
                 </div>
                 
-                <p>Your bot is now in the review queue. Our admin will review it for:</p>
-                <ul>
-                    <li>Security (no malicious code)</li>
-                    <li>Compliance with bot API requirements</li>
-                    <li>Code quality and functionality</li>
-                </ul>
+                <p>Your bot is now in the review queue. We'll do our best to quickly review and approve it.</p>
                 
-                <p>You'll receive another email once your bot has been reviewed. This typically takes 1-3 days.</p>
+                <p>You'll receive another email once your bot has been reviewed </p>
+
+                <p>If this is taking longer than a few days or you want to quickly test it, please feel free to reach in person to Mr Ansell or reply to this email with a nice message.</p>
                 
                 <p style="margin-top: 30px;">
                     <a href="{self.site_url}" style="background: #4a90e2; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; display: inline-block;">
@@ -124,9 +121,7 @@ class EmailNotifier:
         <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
             <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
                 <h2 style="color: #4caf50;">🎉 Congratulations! Your Bot is Approved</h2>
-                
-                <p>Great news!</p>
-                
+                                
                 <p>Your poker bot <strong>{bot_name}</strong> has been reviewed and approved!</p>
                 
                 {notes_html}
@@ -147,7 +142,7 @@ class EmailNotifier:
                 </p>
                 
                 <p style="color: #666; font-size: 12px; margin-top: 30px;">
-                    Good luck in the tournaments! 🏆
+                    Good luck in the tournaments!
                 </p>
             </div>
         </body>
