@@ -362,18 +362,27 @@ def admin_review_page():
 @app.route('/api/admin/submissions', methods=['GET'])
 @login_required
 def get_pending_submissions():
-    """ADMIN - Get pending bot submissions"""
+    """ADMIN - Get ALL bot submissions (not just pending)"""
     if not current_user.is_admin:
         return jsonify({"error": "Unauthorized"}), 403
     
     try:
-        pending = review_system.get_pending_submissions()
+        # Use the new method that returns ALL submissions
+        all_submissions = review_system.get_all_submissions_admin()
+        
+        # Optionally filter by status if requested
+        status_filter = request.args.get('status', None)
+        if status_filter:
+            all_submissions = [s for s in all_submissions if s['status'] == status_filter]
+        
         return jsonify({
             "success": True,
-            "submissions": pending
+            "submissions": all_submissions
         })
     except Exception as e:
         logging.error(f"Error getting submissions: {str(e)}")
+        import traceback
+        logging.error(traceback.format_exc())
         return jsonify({
             "success": False,
             "error": "Failed to load submissions"
