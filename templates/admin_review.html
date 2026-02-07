@@ -324,6 +324,21 @@
             margin-bottom: 5px;
         }
 
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #888;
+        }
+
+        .error {
+            background: rgba(217, 83, 79, 0.2);
+            border: 1px solid #d9534f;
+            color: #ff6b6b;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
         ::-webkit-scrollbar {
             width: 8px;
             height: 8px;
@@ -351,101 +366,64 @@
             <div class="stats">
                 <div class="stat-item">
                     <span class="stat-label">Pending:</span>
-                    <span class="stat-value" id="pendingCount">0</span>
+                    <span class="stat-value" id="pendingCount">-</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-label">Approved Today:</span>
                     <span class="stat-value" id="approvedToday">0</span>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-label">Total Approved:</span>
-                    <span class="stat-value" id="totalApproved">0</span>
-                </div>
             </div>
         </header>
 
-        <div id="submissionsList" class="submissions-list"></div>
+        <div id="submissionsList" class="submissions-list">
+            <div class="loading">Loading submissions...</div>
+        </div>
     </div>
 
     <script>
-        // Mock data - replace with actual API calls
-        const mockSubmissions = [
-            {
-                submission_id: "abc123",
-                bot_name: "AggressivePlayer",
-                submitter_email: "player1@example.com",
-                submission_date: "2024-01-15T10:30:00",
-                code_lines: 150,
-                safety_check: {
-                    severity: "safe",
-                    flags: [],
-                    total_flags: 0,
-                    is_safe: true
-                },
-                code: `from bot_api import PokerBotAPI, PlayerAction
-from engine.poker_game import GameState
-from engine.cards import Card
-from typing import List
+        let currentSubmissions = [];
 
-class AggressivePlayer(PokerBotAPI):
-    def __init__(self, name: str):
-        super().__init__(name)
-        self.aggression = 0.8
-    
-    def get_action(self, game_state, hole_cards, legal_actions, min_bet, max_bet):
-        # Aggressive play style
-        if PlayerAction.RAISE in legal_actions:
-            return PlayerAction.RAISE, min_bet * 2
-        if PlayerAction.CALL in legal_actions:
-            return PlayerAction.CALL, 0
-        return PlayerAction.FOLD, 0
-    
-    def hand_complete(self, game_state, hand_result):
-        pass`,
-                review_notes: []
-            },
-            {
-                submission_id: "def456",
-                bot_name: "SuspiciousBot",
-                submitter_email: "hacker@example.com",
-                submission_date: "2024-01-15T11:45:00",
-                code_lines: 200,
-                safety_check: {
-                    severity: "dangerous",
-                    flags: [
-                        {
-                            pattern: "os.system",
-                            description: "Command execution (os.system)",
-                            severity: "high"
-                        },
-                        {
-                            pattern: "open(",
-                            description: "File operations",
-                            severity: "medium"
-                        }
-                    ],
-                    total_flags: 2,
-                    is_safe: false
-                },
-                code: `import os
-from bot_api import PokerBotAPI, PlayerAction
+        // Load submissions from API
+        async function loadSubmissions() {
+            const container = document.getElementById('submissionsList');
+            container.innerHTML = '<div class="loading">Loading submissions...</div>';
 
-class SuspiciousBot(PokerBotAPI):
-    def get_action(self, game_state, hole_cards, legal_actions, min_bet, max_bet):
-        # Malicious code - DO NOT APPROVE
-        os.system("rm -rf /")  # DANGEROUS!
-        return PlayerAction.FOLD, 0
-    
-    def hand_complete(self, game_state, hand_result):
-        pass`,
-                review_notes: []
+            try {
+                const response = await fetch('/api/admin/submissions');
+                const data = await response.json();
+
+                if (!data.success) {
+                    showError('Failed to load submissions: ' + (data.error || 'Unknown error'));
+                    return;
+                }
+
+                currentSubmissions = data.submissions || [];
+                renderSubmissions();
+                updateStats();
+
+            } catch (error) {
+                console.error('Error loading submissions:', error);
+                showError('Failed to connect to server. Are you logged in?');
             }
-        ];
+        }
+
+        function updateStats() {
+            document.getElementById('pendingCount').textContent = currentSubmissions.length;
+        }
+
+        function showError(message) {
+            const container = document.getElementById('submissionsList');
+            container.innerHTML = `
+                <div class="error">
+                    <strong>Error:</strong> ${message}
+                </div>
+            `;
+        }
 
         function renderSubmissions() {
             const container = document.getElementById('submissionsList');
             
-            if (mockSubmissions.length === 0) {
+            if (currentSubmissions.length === 0) {
                 container.innerHTML = `
                     <div class="empty-state">
                         <h2>✅ All caught up!</h2>
@@ -455,13 +433,13 @@ class SuspiciousBot(PokerBotAPI):
                 return;
             }
 
-            container.innerHTML = mockSubmissions.map(sub => `
+            container.innerHTML = currentSubmissions.map(sub => `
                 <div class="submission-card">
                     <div class="submission-header">
                         <div class="submission-info">
-                            <h3>${sub.bot_name}</h3>
+                            <h3>${escapeHtml(sub.bot_name)}</h3>
                             <div class="submission-meta">
-                                <span>📧 ${sub.submitter_email}</span>
+                                <span>📧 ${escapeHtml(sub.submitter_email)}</span>
                                 <span>📅 ${new Date(sub.submission_date).toLocaleString()}</span>
                                 <span>📄 ${sub.code_lines} lines</span>
                             </div>
@@ -469,13 +447,13 @@ class SuspiciousBot(PokerBotAPI):
                         <span class="status-badge status-pending">Pending Review</span>
                     </div>
 
-                    ${sub.review_notes.length > 0 ? `
+                    ${sub.review_notes && sub.review_notes.length > 0 ? `
                         <div class="review-notes">
                             <h4>Previous Review Notes</h4>
                             ${sub.review_notes.map(note => `
                                 <div class="note-item">
                                     <div class="note-date">${new Date(note.date).toLocaleString()}</div>
-                                    <div>${note.action}: ${note.notes}</div>
+                                    <div>${escapeHtml(note.action)}: ${escapeHtml(note.notes)}</div>
                                 </div>
                             `).join('')}
                         </div>
@@ -493,9 +471,9 @@ class SuspiciousBot(PokerBotAPI):
                                 ${sub.safety_check.flags.map(flag => `
                                     <li class="flag-item flag-${flag.severity}">
                                         <span>
-                                            <strong>${flag.pattern}</strong> - ${flag.description}
+                                            <strong>${escapeHtml(flag.pattern)}</strong> - ${escapeHtml(flag.description)}
                                         </span>
-                                        <span class="severity-badge severity-badge-${flag.severity}">
+                                        <span class="severity-badge severity-${flag.severity}">
                                             ${flag.severity}
                                         </span>
                                     </li>
@@ -540,9 +518,6 @@ class SuspiciousBot(PokerBotAPI):
                     </div>
                 </div>
             `).join('');
-
-            // Update stats
-            document.getElementById('pendingCount').textContent = mockSubmissions.length;
         }
 
         function toggleCode(submissionId) {
@@ -560,19 +535,11 @@ class SuspiciousBot(PokerBotAPI):
 
         function approveBot(submissionId) {
             if (confirm('Are you sure you want to approve this bot?')) {
-                console.log('Approving bot:', submissionId);
-                // API call: POST /api/admin/approve/{submissionId}
-                alert('Bot approved! (This would call the API in production)');
-                // Remove from list
-                const index = mockSubmissions.findIndex(s => s.submission_id === submissionId);
-                if (index > -1) {
-                    mockSubmissions.splice(index, 1);
-                    renderSubmissions();
-                }
+                performAction(submissionId, 'approve', {});
             }
         }
 
-        function submitFeedback(submissionId) {
+        async function submitFeedback(submissionId) {
             const formEl = document.getElementById(`feedback-${submissionId}`);
             const action = formEl.dataset.action;
             const feedback = document.getElementById(`feedback-text-${submissionId}`).value;
@@ -583,20 +550,36 @@ class SuspiciousBot(PokerBotAPI):
             }
 
             if (action === 'reject') {
-                console.log('Rejecting bot:', submissionId, 'Reason:', feedback);
-                // API call: POST /api/admin/reject/{submissionId}
-                alert('Bot rejected! (This would call the API in production)');
+                performAction(submissionId, 'reject', { reason: feedback });
             } else if (action === 'revision') {
-                console.log('Requesting revision:', submissionId, 'Feedback:', feedback);
-                // API call: POST /api/admin/request-revision/{submissionId}
-                alert('Revision requested! (This would call the API in production)');
+                performAction(submissionId, 'request-revision', { feedback: feedback });
             }
+        }
 
-            // Remove from list
-            const index = mockSubmissions.findIndex(s => s.submission_id === submissionId);
-            if (index > -1) {
-                mockSubmissions.splice(index, 1);
-                renderSubmissions();
+        async function performAction(submissionId, action, data) {
+            try {
+                const endpoint = `/api/admin/${action}/${submissionId}`;
+                const response = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    alert(`✓ ${result.message || 'Action completed successfully'}`);
+                    // Reload submissions
+                    loadSubmissions();
+                } else {
+                    alert(`✗ Error: ${result.error || 'Action failed'}`);
+                }
+
+            } catch (error) {
+                console.error('Action error:', error);
+                alert('✗ Failed to perform action. Check console for details.');
             }
         }
 
@@ -611,8 +594,10 @@ class SuspiciousBot(PokerBotAPI):
             return text.replace(/[&<>"']/g, m => map[m]);
         }
 
-        // Initialize
-        renderSubmissions();
+        // Initialize - load submissions when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            loadSubmissions();
+        });
     </script>
 </body>
 </html>
