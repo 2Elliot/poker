@@ -15,6 +15,9 @@ from threading import Lock
 import time
 from datetime import timedelta
 import secrets
+from dotenv import load_dotenv
+
+load_dotenv("/home/poker/poker/.env")
 
 # Add backend to path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'backend'))
