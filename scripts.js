@@ -1,5 +1,8 @@
 // API Configuration
-const API_BASE_URL = 'http://localhost:5000/api';
+// Use relative URL so it works both locally and in production
+const API_BASE_URL = window.location.hostname === 'localhost' 
+    ? 'http://localhost:5000/api' 
+    : '/api';
 
 // Game State
 const MIN_PLAYERS = 2;
