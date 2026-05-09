@@ -365,7 +365,7 @@ def get_my_pending_bots():
             review_system.submissions = review_system._load_submissions()
             pending = []
             for sub_id, sub in review_system.submissions["submissions"].items():
-                owner = sub.get("submitter_username", sub.get("submitter_email"))
+                owner = sub.get("submitter_username")
                 if owner != current_user.username:
                     continue
                 if sub["status"] != "pending_review":
@@ -489,7 +489,7 @@ def get_bot_code(submission_id):
                 return jsonify({'success': False, 'error': 'Submission not found'}), 404
 
             sub = review_system.submissions["submissions"][submission_id]
-            owner = sub.get("submitter_username", sub.get("submitter_email"))
+            owner = sub.get("submitter_username")
             if owner != current_user.username:
                 return jsonify({'success': False, 'error': 'Unauthorized'}), 403
 
@@ -524,7 +524,7 @@ def user_delete_bot(submission_id):
                 return jsonify({'success': False, 'error': 'Submission not found'}), 404
 
             sub = review_system.submissions["submissions"][submission_id]
-            owner = sub.get("submitter_username", sub.get("submitter_email"))
+            owner = sub.get("submitter_username")
             if owner != current_user.username:
                 return jsonify({'success': False, 'error': 'Unauthorized'}), 403
 

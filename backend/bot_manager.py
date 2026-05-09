@@ -5,11 +5,9 @@ Loads, manages, and executes student poker bots safely
 import importlib.util
 import sys
 import os
-import signal
 import time
 import traceback
 import threading
-import multiprocessing
 from typing import Dict, List, Optional, Any, Tuple
 from contextlib import contextmanager
 import logging
@@ -34,16 +32,9 @@ class BotError(Exception):
     pass
 
 
-def timeout_handler(signum, frame):
-    """Signal handler for timeout"""
-    raise TimeoutException("Bot action timed out")
-
-
 @contextmanager
 def timeout_context(seconds: float):
     """Context manager for handling timeouts - Windows compatible"""
-    import threading
-    
     timer = None
     timed_out = [False]
     

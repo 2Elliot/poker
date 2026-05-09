@@ -1,7 +1,6 @@
 """
 Bot Approval and Review System
 Allows manual review of bots before they become active in tournaments
-Includes email notifications and comprehensive logging
 """
 import os
 import json
@@ -204,7 +203,7 @@ class BotReviewSystem:
                         pending.append({
                             "submission_id": sub_id,
                             "bot_name": sub["bot_name"],
-                            "submitter_username": sub.get("submitter_username", sub.get("submitter_email", "unknown")),
+                            "submitter_username": sub.get("submitter_username", "unknown"),
                             "submission_date": sub["submission_date"],
                             "code": code,
                             "code_lines": len(code.split('\n')),
@@ -247,7 +246,7 @@ class BotReviewSystem:
                     all_subs.append({
                         "submission_id": sub_id,
                         "bot_name": sub["bot_name"],
-                        "submitter_username": sub.get("submitter_username", sub.get("submitter_email", "unknown")),
+                        "submitter_username": sub.get("submitter_username", "unknown"),
                         "submission_date": sub["submission_date"],
                         "status": sub["status"],
                         "code": code,
@@ -496,7 +495,7 @@ class BotReviewSystem:
                 # Move to approved bots
                 self.submissions["approved_bots"][submission["bot_name"]] = {
                     "submission_id": submission_id,
-                    "submitter_username": submission.get("submitter_username", submission.get("submitter_email", "unknown")),
+                    "submitter_username": submission.get("submitter_username", "unknown"),
                     "approval_date": submission["approval_date"]
                 }
                 
@@ -617,7 +616,7 @@ class BotReviewSystem:
             submission = self.submissions["submissions"][submission_id]
 
             # Verify ownership
-            if submission.get("submitter_username", submission.get("submitter_email")) != submitter_username:
+            if submission.get("submitter_username") != submitter_username:
                 return {"success": False, "error": "Unauthorized"}
 
             # Allow resubmission from revision_requested or approved status
@@ -661,7 +660,7 @@ class BotReviewSystem:
             submission = self.submissions["submissions"][submission_id]
 
             # Verify ownership
-            if submission.get("submitter_username", submission.get("submitter_email")) != submitter_username:
+            if submission.get("submitter_username") != submitter_username:
                 return {"success": False, "error": "Unauthorized"}
 
             # Only allow withdrawing non-approved submissions
@@ -685,7 +684,7 @@ class BotReviewSystem:
             user_subs = []
 
             for sub_id, sub in self.submissions["submissions"].items():
-                sub_owner = sub.get("submitter_username", sub.get("submitter_email"))
+                sub_owner = sub.get("submitter_username")
                 if sub_owner == username:
                     user_subs.append({
                         "submission_id": sub_id,
