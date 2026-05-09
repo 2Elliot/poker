@@ -698,16 +698,11 @@ class BotReviewSystem:
             return user_subs
     
     def _cleanup_submission_files(self, submission_id: str):
-        """Remove plaintext code files after approval/rejection"""
-        files = [
-            os.path.join(self.review_directory, f"{submission_id}.py"),
-            os.path.join(self.review_directory, f"{submission_id}.pwd")
-        ]
-
-        for file_path in files:
-            if os.path.exists(file_path):
-                try:
-                    os.remove(file_path)
-                    self.logger.debug(f"Cleaned up file: {file_path}")
-                except Exception as e:
-                    self.logger.error(f"Failed to remove file {file_path}: {str(e)}")
+        """Remove plaintext code file after approval/rejection"""
+        file_path = os.path.join(self.review_directory, f"{submission_id}.py")
+        if os.path.exists(file_path):
+            try:
+                os.remove(file_path)
+                self.logger.debug(f"Cleaned up file: {file_path}")
+            except Exception as e:
+                self.logger.error(f"Failed to remove file {file_path}: {str(e)}")
